@@ -58,6 +58,9 @@ body{
   display:flex;align-items:center;justify-content:center;letter-spacing:-.5px;
   box-shadow:0 2px 8px rgba(0,107,104,.55),inset 0 1px 0 rgba(255,255,255,.15);
 }
+.nav-logos{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-left:6px}
+.nav-logo-bidv{height:28px;width:auto;display:block}
+.nav-logo-cdbidv{height:26px;width:auto;display:block;opacity:.92}
 .nav-info{min-width:0}
 .nav-name{color:white;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-sub{color:rgba(255,255,255,.48);font-size:10px}
@@ -323,6 +326,66 @@ body{
   background:rgba(7,148,85,.15);color:#86efac;
   padding:3px 10px;border-radius:6px;border:1px solid rgba(7,148,85,.25);
 }
+
+/* ─── Auto-Scaling Demo ─── */
+.scale-demo{
+  background:rgba(0,66,64,.12);border:1px solid rgba(55,173,170,.25);
+  border-radius:16px;padding:16px;margin-bottom:16px;
+}
+.scale-demo-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.scale-demo-label{font-size:11px;font-weight:800;letter-spacing:.7px;color:var(--brand-300);text-transform:uppercase}
+.scale-status-badge{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(7,148,85,.15);color:#86efac;border:1px solid rgba(7,148,85,.3)}
+.scale-status-badge.danger{background:rgba(217,45,32,.15);color:#fca5a5;border-color:rgba(217,45,32,.3)}
+.scale-status-badge.warning{background:rgba(255,183,27,.12);color:var(--gold-400);border-color:rgba(255,183,27,.3)}
+.scale-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.sm-item{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px;text-align:center}
+.sm-val{font-size:15px;font-weight:900;color:var(--brand-300);line-height:1}
+.sm-val.danger{color:#fca5a5}
+.sm-lbl{font-size:8.5px;color:rgba(255,255,255,.5);margin-top:2px}
+.scale-load-bar{margin-bottom:12px}
+.slb-track{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.slb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--brand-400),var(--brand-300));transition:width .6s,background .4s}
+.slb-fill.danger{background:linear-gradient(90deg,#e11d48,#f43f5e)}
+.slb-fill.warning{background:linear-gradient(90deg,#d97706,var(--gold-500))}
+.scale-grid{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;
+  min-height:56px;align-items:flex-start;
+}
+.srv-node{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:18px;font-weight:700;gap:2px;
+  border:1.5px solid rgba(55,173,170,.35);
+  background:rgba(55,173,170,.08);
+  transition:all .35s;
+}
+.srv-node .nd-lbl{font-size:7.5px;color:rgba(255,255,255,.5);line-height:1}
+.srv-node.busy{background:rgba(255,183,27,.1);border-color:rgba(255,183,27,.45)}
+.srv-node.overload{background:rgba(217,45,32,.12);border-color:rgba(217,45,32,.5);animation:srvShake .3s ease-in-out}
+.srv-node.spawn{animation:srvSpawn .5s ease-out}
+.srv-node.shrink{animation:srvShrink .4s ease-in forwards}
+@keyframes srvSpawn{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes srvShrink{0%{transform:scale(1);opacity:1}100%{transform:scale(0);opacity:0}}
+@keyframes srvShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.scale-log{
+  background:rgba(0,0,0,.3);border-radius:8px;padding:8px 10px;
+  max-height:72px;overflow-y:auto;margin-bottom:10px;scrollbar-width:none;
+}
+.scale-log::-webkit-scrollbar{display:none}
+.slog-item{font-size:10px;color:rgba(255,255,255,.6);line-height:1.7}
+.slog-item.slog-ok{color:#86efac}
+.slog-item.slog-warn{color:var(--gold-400)}
+.slog-item.slog-alert{color:#fca5a5}
+.scale-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.sc-btn{
+  border:none;padding:10px 4px;border-radius:10px;font-size:10.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;transition:all .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.sc-btn:active{transform:scale(.92)}
+.sc-btn-norm{background:rgba(7,148,85,.2);color:#86efac;border:1px solid rgba(7,148,85,.35)}
+.sc-btn-spike{background:rgba(217,45,32,.2);color:#fca5a5;border:1px solid rgba(217,45,32,.35)}
+.sc-btn-reset{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12)}
 
 /* ─── KPI Cards ─── */
 .kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
@@ -1083,10 +1146,22 @@ body{
 <!-- ════════ TOP NAV ════════ -->
 <header class="top-nav">
   <div class="nav-logo">
-    <div class="nav-icon">BIDV</div>
+    <!-- BIDV Official Logo SVG -->
+    <svg class="nav-logo-bidv" viewBox="0 0 72 28" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="28" rx="4" fill="#0051A5"/>
+      <rect y="22" width="72" height="6" rx="0" fill="#009F6B"/>
+      <rect y="22" width="72" height="2" fill="#009F6B"/>
+      <text x="36" y="16" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="13" font-weight="900" fill="white" letter-spacing="1.5">BIDV</text>
+    </svg>
+    <!-- Công Đoàn BIDV Logo SVG -->
+    <svg class="nav-logo-cdbidv" viewBox="0 0 82 28" xmlns="http://www.w3.org/2000/svg">
+      <rect width="82" height="28" rx="4" fill="#c8102e"/>
+      <text x="41" y="11.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#FFD700" letter-spacing=".5">CÔNG ĐOÀN</text>
+      <text x="41" y="22" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="9.5" font-weight="900" fill="white" letter-spacing=".8">BIDV</text>
+    </svg>
     <div class="nav-info">
       <div class="nav-name">Đa Đám Mây Lai</div>
-      <div class="nav-sub">Công Đoàn BIDV · Hiến Kế 2026</div>
+      <div class="nav-sub">Hiến Kế 2026</div>
     </div>
   </div>
   <div class="nav-badge">🏆 Hiến Kế</div>
@@ -1121,7 +1196,7 @@ body{
           <div class="arch-blk-sub">On-Premises</div>
           <div class="arch-blk-items">
             <div class="arch-blk-item">🏦 Core Banking</div>
-            <div class="arch-blk-item">🔐 Dữ liệu M4</div>
+            <div class="arch-blk-item">🔐 Dữ liệu Cấp M4 — Tuyệt Mật</div>
             <div class="arch-blk-item">⚖️ Compliance</div>
           </div>
         </div>
@@ -1133,7 +1208,7 @@ body{
           <div class="arch-blk-items">
             <div class="arch-blk-item">⚙️ Hệ thống trọng yếu</div>
             <div class="arch-blk-item">🛡️ Zero Trust</div>
-            <div class="arch-blk-item">📊 Dữ liệu M3</div>
+            <div class="arch-blk-item">📊 Dữ liệu Cấp M3 — Bí Mật</div>
           </div>
         </div>
 
@@ -1301,7 +1376,7 @@ body{
         <div class="zone-desc">Core banking, dữ liệu siêu nhạy cảm — chủ quyền dữ liệu tuyệt đối, tuân thủ nghiêm ngặt</div>
         <div class="zone-tags">
           <span class="z-tag">Core Banking</span>
-          <span class="z-tag">Dữ liệu M4</span>
+          <span class="z-tag">Dữ liệu Cấp M4 — Tuyệt Mật</span>
           <span class="z-tag">Compliance</span>
         </div>
       </div>
@@ -1313,7 +1388,7 @@ body{
         <div class="zone-desc">Hệ thống trọng yếu, dữ liệu quan trọng — bảo đảm quy định chủ quyền dữ liệu quốc gia</div>
         <div class="zone-tags">
           <span class="z-tag">Hệ thống trọng yếu</span>
-          <span class="z-tag">Dữ liệu M3</span>
+          <span class="z-tag">Dữ liệu Cấp M3 — Bí Mật</span>
           <span class="z-tag">High Security</span>
         </div>
       </div>
@@ -1358,6 +1433,32 @@ body{
           <span class="arrow-to">OpEx</span>
           <span style="font-size:11px;color:rgba(255,255,255,.5);font-weight:500">Pay-as-you-go</span>
         </div>
+      </div>
+    </div>
+
+    <!-- AUTO-SCALING DEMO -->
+    <div class="scale-demo anim" data-d="4" id="scaleDemo">
+      <div class="scale-demo-header">
+        <span class="scale-demo-label">⚡ Demo Mở Rộng Linh Hoạt — Cloud Auto-Scaling</span>
+        <span class="scale-status-badge" id="scaleStatus">🟢 Bình thường</span>
+      </div>
+      <div class="scale-metrics">
+        <div class="sm-item"><div class="sm-val" id="smLoad">12%</div><div class="sm-lbl">Tải hệ thống</div></div>
+        <div class="sm-item"><div class="sm-val" id="smNodes">3</div><div class="sm-lbl">Nodes hoạt động</div></div>
+        <div class="sm-item"><div class="sm-val" id="smRps">420</div><div class="sm-lbl">Req/s</div></div>
+        <div class="sm-item"><div class="sm-val" id="smLatency">28ms</div><div class="sm-lbl">Độ trễ</div></div>
+      </div>
+      <div class="scale-load-bar">
+        <div class="slb-track"><div class="slb-fill" id="slbFill" style="width:12%"></div></div>
+      </div>
+      <div class="scale-grid" id="scaleGrid"></div>
+      <div class="scale-log" id="scaleLog">
+        <div class="slog-item slog-ok">✅ Hệ thống khởi động — 3 nodes sẵn sàng</div>
+      </div>
+      <div class="scale-btns">
+        <button class="sc-btn sc-btn-norm" onclick="setTraffic('normal')">🟢 Bình thường</button>
+        <button class="sc-btn sc-btn-spike" onclick="setTraffic('spike')">🔴 Tải đột biến</button>
+        <button class="sc-btn sc-btn-reset" onclick="setTraffic('reset')">↺ Đặt lại</button>
       </div>
     </div>
 
@@ -1995,6 +2096,125 @@ function tapSupport(btn, emoji){
 }
 /* expose tapSupport globally */
 window.tapSupport = tapSupport;
+
+/* ── Auto-Scaling Demo ── */
+(function(){
+  var BASE_NODES = 3;
+  var MAX_NODES  = 9;
+  var nodes      = [];
+  var mode       = 'normal'; // 'normal' | 'spike' | 'reset'
+  var tick       = 0;
+  var grid       = document.getElementById('scaleGrid');
+  var logEl      = document.getElementById('scaleLog');
+  var statusEl   = document.getElementById('scaleStatus');
+  var loadEl     = document.getElementById('smLoad');
+  var nodesEl    = document.getElementById('smNodes');
+  var rpsEl      = document.getElementById('smRps');
+  var latEl      = document.getElementById('smLatency');
+  var fillEl     = document.getElementById('slbFill');
+  if(!grid) return;
+
+  function addLog(msg, cls){
+    var d = document.createElement('div');
+    d.className = 'slog-item ' + (cls||'');
+    d.textContent = msg;
+    logEl.insertBefore(d, logEl.firstChild);
+    if(logEl.children.length > 8) logEl.removeChild(logEl.lastChild);
+  }
+
+  function makeNode(idx, isNew){
+    var n = document.createElement('div');
+    n.className = 'srv-node' + (isNew ? ' spawn' : '');
+    n.dataset.idx = idx;
+    var icons = ['☁️','⚙️','🖥️','🔧','💾'];
+    n.innerHTML = icons[idx % icons.length] + '<div class="nd-lbl">Node '+(idx+1)+'</div>';
+    return n;
+  }
+
+  function render(load){
+    var target = BASE_NODES;
+    if(load > 75) target = MAX_NODES;
+    else if(load > 45) target = Math.min(MAX_NODES, BASE_NODES + Math.ceil((load-45)/10));
+
+    while(nodes.length < target){
+      var n = makeNode(nodes.length, true);
+      grid.appendChild(n);
+      nodes.push(n);
+      if(nodes.length > BASE_NODES) addLog('🚀 Scale-out: thêm Node '+(nodes.length)+' — tải phân tán', 'slog-ok');
+    }
+    while(nodes.length > target){
+      var rem = nodes.pop();
+      rem.classList.add('shrink');
+      (function(el){ setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 400); })(rem);
+      addLog('📉 Scale-in: thu hồi Node '+(nodes.length+1)+' — tối ưu chi phí', 'slog-warn');
+    }
+    nodes.forEach(function(n, i){
+      n.classList.remove('busy','overload');
+      if(load > 80 && i < nodes.length - 2) n.classList.add('overload');
+      else if(load > 40) n.classList.add('busy');
+    });
+    fillEl.style.width = load + '%';
+    fillEl.className   = 'slb-fill' + (load>80?' danger':load>55?' warning':'');
+    loadEl.textContent = load + '%';
+    loadEl.className   = 'sm-val' + (load>80?' danger':'');
+    nodesEl.textContent = nodes.length;
+    var rps  = mode === 'spike' ? Math.round(3200 + Math.random()*800) : Math.round(320 + Math.random()*120);
+    var lat  = load > 80 ? Math.round(28 + Math.random()*12) : Math.round(18 + Math.random()*12);
+    rpsEl.textContent  = rps.toLocaleString();
+    latEl.textContent  = lat + 'ms';
+  }
+
+  function initNodes(){
+    grid.innerHTML = '';
+    nodes = [];
+    for(var i = 0; i < BASE_NODES; i++){
+      var n = makeNode(i, false);
+      grid.appendChild(n);
+      nodes.push(n);
+    }
+    logEl.innerHTML = '<div class="slog-item slog-ok">✅ Hệ thống khởi động — 3 nodes sẵn sàng</div>';
+    render(12);
+    statusEl.textContent = '🟢 Bình thường';
+    statusEl.className = 'scale-status-badge';
+  }
+
+  var spikePhase = 0;
+  setInterval(function(){
+    tick++;
+    var load = 12;
+    if(mode === 'spike'){
+      spikePhase++;
+      if(spikePhase <= 3)       load = 35 + spikePhase * 15;
+      else if(spikePhase <= 8)  load = Math.min(95, 65 + Math.random()*25);
+      else if(spikePhase <= 12) load = Math.max(25, 95 - (spikePhase-8)*15);
+      else { mode = 'normal'; spikePhase = 0; statusEl.textContent='🟢 Bình thường'; statusEl.className='scale-status-badge'; addLog('✅ Tải trở về bình thường — scale-in hoàn tất', 'slog-ok'); }
+      if(spikePhase === 3) addLog('⚠️ Phát hiện tải tăng đột biến — kích hoạt auto-scale!', 'slog-alert');
+    } else {
+      load = 8 + Math.round(Math.random()*10);
+    }
+    render(load);
+  }, 900);
+
+  window.setTraffic = function(t){
+    if(t === 'spike'){
+      if(mode === 'spike') return;
+      mode = 'spike'; spikePhase = 0;
+      statusEl.textContent = '🔴 Tải đột biến';
+      statusEl.className = 'scale-status-badge danger';
+      addLog('🔴 Mô phỏng tải đột biến bắt đầu...', 'slog-alert');
+    } else if(t === 'normal'){
+      mode = 'normal'; spikePhase = 0;
+      statusEl.textContent = '🟢 Bình thường';
+      statusEl.className = 'scale-status-badge';
+      addLog('🟢 Chuyển về tải bình thường', 'slog-ok');
+    } else {
+      mode = 'normal'; spikePhase = 0;
+      initNodes();
+    }
+  };
+
+  initNodes();
+}());
 
 /* ── Section nav highlight on scroll ── */
 var secIds = ['s1','s2','s3','s4','s5','s6','s7','s8'];
