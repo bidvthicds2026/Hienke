@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Đa Đám Mây Lai — BIDV Hiến Kế 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root {
+  --brand-25:#f0f9f9; --brand-50:#ddf2f2; --brand-100:#b8e5e5;
+  --brand-300:#6ecac8; --brand-400:#37adaa; --brand-500:#006b68;
+  --brand-600:#005c59; --brand-700:#004240; --brand-800:#002e2d;
+  --gold-400:#ffd166; --gold-500:#ffb71b; --gold-600:#c28a15;
+  --n-50:#f9fbfb; --n-100:#f3f6f6; --n-200:#e6e9ea;
+  --n-500:#70797b; --n-600:#4f5d5f; --n-700:#3d494b;
+  --n-800:#202828; --n-900:#171f21;
+  --green-600:#079455; --green-700:#067647;
+  --red-500:#d92d20; --blue-500:#2e90fa; --purple-500:#9e77ed;
+  --shadow-xl:0 20px 40px rgba(0,0,0,.5),0 8px 16px rgba(0,0,0,.25);
+  --glow-teal:0 0 24px rgba(55,173,170,.5),0 0 48px rgba(55,173,170,.2);
+  --glow-gold:0 0 24px rgba(255,183,27,.5),0 0 48px rgba(255,183,27,.2);
+  --grd-dark-bg:linear-gradient(135deg,#0a1628 0%,#0d2020 50%,#081a28 100%);
+  --grd-nav:linear-gradient(270deg,#262A29 0.7%,#31403C 99.18%);
+  --grd-hero:
+    radial-gradient(ellipse at 8% 8%,rgba(55,173,170,.38) 0%,transparent 55%),
+    radial-gradient(ellipse at 92% 92%,rgba(255,183,27,.22) 0%,transparent 55%),
+    linear-gradient(145deg,#001f1e 0%,#003b39 60%,#002e2d 100%);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Roboto',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--grd-dark-bg);
+  background-attachment:fixed;
+  color:rgba(255,255,255,.92);
+  min-height:100vh;
+  line-height:1.55;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ═══════════════ TOP NAV ═══════════════ */
+.top-nav{
+  background:var(--grd-nav);
+  height:56px;display:flex;align-items:center;padding:0 16px;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 4px 16px rgba(0,0,0,.7);
+  border-bottom:1px solid rgba(55,173,170,.18);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.nav-icon{
+  background:var(--brand-500);color:white;font-weight:900;
+  font-size:12px;width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;letter-spacing:-.5px;
+  box-shadow:0 2px 8px rgba(0,107,104,.55),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.nav-info{min-width:0}
+.nav-name{color:white;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-sub{color:rgba(255,255,255,.48);font-size:10px}
+.nav-badge{
+  background:var(--gold-500);color:var(--n-900);
+  font-size:10.5px;font-weight:800;padding:4px 10px;
+  border-radius:999px;white-space:nowrap;margin-left:10px;flex-shrink:0;
+  box-shadow:0 2px 10px rgba(255,183,27,.45);
+}
+
+/* ═══════════════ SECTION NAV ═══════════════ */
+.sec-nav{
+  background:rgba(8,18,32,.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;overflow-x:auto;padding:0 4px;
+  position:sticky;top:56px;z-index:199;
+  scrollbar-width:none;
+}
+.sec-nav::-webkit-scrollbar{display:none}
+.sec-btn{
+  padding:11px 13px;border:none;background:none;cursor:pointer;
+  font-family:inherit;font-size:11.5px;font-weight:500;
+  color:rgba(255,255,255,.48);white-space:nowrap;flex-shrink:0;
+  border-bottom:2px solid transparent;
+  transition:all 180ms;
+  display:flex;align-items:center;gap:4px;
+}
+.sec-btn:hover{color:var(--brand-300);background:rgba(55,173,170,.07)}
+.sec-btn.active{color:var(--brand-300);border-bottom-color:var(--brand-400);background:rgba(55,173,170,.05)}
+
+/* ═══════════════ SECTION CONTAINERS ═══════════════ */
+.pane{padding:28px 16px 36px;max-width:480px;margin:0 auto}
+
+/* ═══════════════ SECTION 1: HERO ═══════════════ */
+#s1{
+  background:var(--grd-hero);
+  padding:36px 20px 44px;
+  position:relative;overflow:hidden;
+}
+#s1::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:320px;height:320px;
+  background:radial-gradient(circle,rgba(55,173,170,.22) 0%,transparent 70%);
+  pointer-events:none;animation:bgPulse1 6s ease-in-out infinite;
+}
+#s1::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:240px;height:240px;
+  background:radial-gradient(circle,rgba(255,183,27,.18) 0%,transparent 70%);
+  pointer-events:none;animation:bgPulse2 7s ease-in-out infinite;
+}
+@keyframes bgPulse1{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes bgPulse2{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.2)}}
+.hero-inner{max-width:480px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,183,27,.13);color:var(--gold-500);
+  font-size:10.5px;font-weight:800;padding:5px 12px;border-radius:999px;
+  margin-bottom:18px;border:1px solid rgba(255,183,27,.32);letter-spacing:.8px;
+  text-transform:uppercase;
+}
+.hero-h1{
+  font-size:38px;font-weight:900;line-height:1.08;margin-bottom:6px;
+  background:linear-gradient(145deg,#ffffff 15%,var(--brand-300) 85%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:-1.5px;
+}
+.hero-h2{
+  font-size:13.5px;font-weight:500;
+  color:var(--gold-400);font-style:italic;
+  margin-bottom:14px;letter-spacing:.3px;
+}
+.hero-desc{
+  font-size:12.5px;color:rgba(255,255,255,.68);
+  line-height:1.7;margin-bottom:26px;
+}
+
+/* ─── Flip Cards ─── */
+.flip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.flip-card{height:88px;perspective:700px;cursor:pointer}
+.flip-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .65s cubic-bezier(.4,0,.2,1);
+}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{
+  position:absolute;inset:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:8px;text-align:center;
+}
+.flip-front{
+  background:rgba(217,45,32,.1);
+  border:1px solid rgba(217,45,32,.28);
+  border-left:3px solid var(--red-500);
+}
+.flip-front .f-icon{font-size:22px;margin-bottom:4px}
+.flip-front .f-word{font-size:12px;font-weight:800;color:#ff6b68;line-height:1.2}
+.flip-back{
+  transform:rotateY(180deg);
+  background:rgba(55,173,170,.1);
+  border:1px solid rgba(55,173,170,.28);
+  border-left:3px solid var(--brand-400);
+}
+.flip-back .f-icon{font-size:22px;margin-bottom:4px}
+.flip-back .f-word{font-size:11px;font-weight:700;color:var(--brand-300);line-height:1.3}
+
+/* ─── Hero Stats ─── */
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.h-stat{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  padding:14px 10px;border-radius:12px;text-align:center;
+  backdrop-filter:blur(10px);
+}
+.h-stat-val{font-size:28px;font-weight:900;line-height:1;color:var(--gold-500)}
+.h-stat-lbl{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:5px;line-height:1.4}
+
+/* ═══════════════ SECTION BACKGROUNDS ═══════════════ */
+#s2{background:linear-gradient(180deg,#0a1628 0%,#0d1e28 100%)}
+#s3{background:linear-gradient(180deg,#0d1e28 0%,#0a1628 100%)}
+#s4{background:linear-gradient(180deg,#0a1628 0%,#001f1e 100%)}
+#s5{background:linear-gradient(180deg,#001f1e 0%,#0a1628 100%)}
+
+/* ═══════════════ COMMON SECTION ELEMENTS ═══════════════ */
+.sec-label{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;
+  color:var(--brand-300);margin-bottom:7px;
+  display:flex;align-items:center;gap:6px;
+}
+.sec-title{
+  font-size:22px;font-weight:800;color:white;
+  margin-bottom:8px;line-height:1.2;letter-spacing:-.35px;
+}
+.sec-sub{
+  font-size:12.5px;color:rgba(255,255,255,.62);
+  margin-bottom:24px;line-height:1.65;
+}
+
+/* ─── Glass Card ─── */
+.glass{
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:18px;
+  transition:all 250ms;
+}
+.glass:hover{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(55,173,170,.25);
+  transform:translateY(-2px);
+  box-shadow:var(--glow-teal);
+}
+
+/* ─── Quote Block ─── */
+.quote-block{
+  border-left:3px solid var(--brand-400);
+  padding:12px 16px;margin:16px 0;
+  background:rgba(55,173,170,.06);
+  border-radius:0 10px 10px 0;
+}
+.quote-text{font-size:13px;color:rgba(255,255,255,.85);font-style:italic;line-height:1.65}
+
+/* ─── Policy Cards ─── */
+.policy-card{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:14px;margin-bottom:10px;
+  transition:all 200ms;
+}
+.policy-card:hover{background:rgba(255,255,255,.07);transform:translateX(3px)}
+.p-ico{font-size:26px;flex-shrink:0;margin-top:2px}
+.p-title{font-size:13px;font-weight:700;color:var(--gold-400);margin-bottom:4px}
+.p-desc{font-size:12px;color:rgba(255,255,255,.68);line-height:1.55}
+
+/* ─── Bullet List ─── */
+.bullet-list{display:flex;flex-direction:column;gap:8px}
+.bullet-item{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12.5px;color:rgba(255,255,255,.82);
+}
+.bullet-dot{color:var(--brand-400);font-size:16px;flex-shrink:0;line-height:1.3}
+
+/* ═══════════════ SECTION 3: ARCHITECTURE ═══════════════ */
+.zone-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+.zone-card{
+  border-radius:14px;padding:16px;color:white;
+  border:1px solid rgba(255,255,255,.12);
+  transition:all 280ms;
+}
+.zone-card:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.4)}
+.zone-public{
+  background:linear-gradient(135deg,rgba(0,134,201,.18),rgba(12,74,110,.12));
+  border-color:rgba(125,211,252,.2);
+}
+.zone-private{
+  background:linear-gradient(135deg,rgba(166,44,42,.18),rgba(69,10,10,.12));
+  border-color:rgba(252,165,165,.2);
+}
+.zone-onprem{
+  background:linear-gradient(135deg,rgba(247,144,9,.14),rgba(92,40,0,.12));
+  border-color:rgba(252,211,77,.18);
+}
+.zone-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.zone-icon{font-size:26px}
+.zone-name{font-size:15px;font-weight:700}
+.zone-name span{display:block;font-size:11px;font-weight:400;opacity:.7;margin-top:1px}
+.zone-desc{font-size:12px;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:10px}
+.zone-tags{display:flex;flex-wrap:wrap;gap:5px}
+.z-tag{
+  font-size:10.5px;padding:2px 8px;border-radius:6px;font-weight:600;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ─── Zero Trust ─── */
+.zt-box{
+  background:linear-gradient(135deg,rgba(0,107,104,.14),rgba(0,66,64,.12));
+  border:1px solid rgba(55,173,170,.22);
+  border-radius:14px;padding:18px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.zt-box::after{
+  content:'🛡';position:absolute;right:-8px;bottom:-8px;
+  font-size:88px;opacity:.05;pointer-events:none;line-height:1;
+}
+.zt-title{font-size:16px;font-weight:800;color:var(--brand-300);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.zt-badge{
+  font-size:10px;background:rgba(55,173,170,.18);border:1px solid rgba(55,173,170,.3);
+  color:var(--brand-300);padding:2px 8px;border-radius:999px;font-weight:700;
+}
+.zt-desc{font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:12px}
+.zt-layers{display:flex;flex-direction:column;gap:5px}
+.zt-layer{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(55,173,170,.08);border:1px solid rgba(55,173,170,.14);
+  border-radius:8px;padding:8px 10px;font-size:11.5px;color:rgba(255,255,255,.85);
+}
+.zt-dot{width:8px;height:8px;border-radius:50%;background:var(--brand-400);flex-shrink:0}
+
+/* ─── FinOps ─── */
+.finops-box{
+  background:rgba(255,183,27,.07);
+  border:1px solid rgba(255,183,27,.2);
+  border-radius:14px;padding:16px;margin-bottom:14px;
+  display:flex;align-items:flex-start;gap:12px;
+}
+.finops-icon{font-size:34px;flex-shrink:0}
+.finops-title{font-size:14px;font-weight:700;color:var(--gold-400);margin-bottom:4px}
+.finops-desc{font-size:12px;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:8px}
+.capex-arrow{
+  display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+}
+.arrow-from{
+  background:rgba(217,45,32,.15);color:#fca5a5;
+  padding:3px 10px;border-radius:6px;border:1px solid rgba(217,45,32,.25);
+}
+.arrow-to{
+  background:rgba(7,148,85,.15);color:#86efac;
+  padding:3px 10px;border-radius:6px;border:1px solid rgba(7,148,85,.25);
+}
+
+/* ─── KPI Cards ─── */
+.kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.kpi-card{
+  border-radius:12px;padding:16px 12px;text-align:center;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  transition:all 250ms;
+}
+.kpi-card:hover{transform:translateY(-3px)}
+.kpi-val{font-size:30px;font-weight:900;line-height:1;margin-bottom:4px}
+.kpi-neg .kpi-val{color:#ff6b6b;text-shadow:0 0 20px rgba(217,45,32,.4)}
+.kpi-pos .kpi-val{color:#86efac;text-shadow:0 0 20px rgba(7,148,85,.4)}
+.kpi-lbl{font-size:11px;color:rgba(255,255,255,.6);line-height:1.4}
+
+/* ═══════════════ SECTION 4: 3P PILLARS ═══════════════ */
+.pillar-grid{display:flex;flex-direction:column;gap:14px}
+.pillar{
+  border-radius:16px;padding:20px 18px;color:white;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  transition:all 300ms;
+}
+.pillar:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.45)}
+.pillar-p {background:linear-gradient(140deg,rgba(0,107,104,.28),rgba(0,66,64,.18))}
+.pillar-pl{background:linear-gradient(140deg,rgba(46,144,250,.2),rgba(6,102,170,.14))}
+.pillar-pe{background:linear-gradient(140deg,rgba(158,119,237,.2),rgba(105,65,198,.14))}
+.pillar-big{
+  position:absolute;top:-12px;right:8px;
+  font-size:96px;font-weight:900;line-height:1;
+  color:rgba(255,255,255,.05);letter-spacing:-6px;
+  pointer-events:none;font-style:italic;
+}
+.pillar-code{font-size:11.5px;font-weight:800;letter-spacing:1px;color:var(--brand-300);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.pillar-name{font-size:18px;font-weight:800;color:white;margin-bottom:8px}
+.pillar-desc{font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:12px}
+.pillar-items{display:flex;flex-direction:column;gap:6px}
+.pillar-item{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:rgba(255,255,255,.85);
+  padding:7px 10px;background:rgba(255,255,255,.06);
+  border-radius:8px;line-height:1.45;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* ═══════════════ SECTION 5: ROADMAP TIMELINE ═══════════════ */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:4px}
+.timeline::before{
+  content:'';position:absolute;left:20px;top:22px;bottom:30px;
+  width:2px;
+  background:linear-gradient(180deg,var(--brand-400),var(--brand-600),rgba(55,173,170,.15));
+}
+.tl-item{display:flex;gap:16px;padding-bottom:28px;position:relative}
+.tl-dot{
+  width:42px;height:42px;flex-shrink:0;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;position:relative;z-index:1;
+  border:2px solid rgba(255,255,255,.15);
+  box-shadow:0 0 0 4px rgba(0,8,20,.8),0 0 20px rgba(55,173,170,.35);
+}
+.tl-dot-1{background:linear-gradient(135deg,var(--brand-500),var(--brand-700))}
+.tl-dot-2{background:linear-gradient(135deg,#f79009,#92400e)}
+.tl-dot-3{background:linear-gradient(135deg,#6941c6,#3b0764)}
+.tl-content{flex:1;padding-top:2px}
+.tl-period{
+  display:inline-block;
+  font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:999px;
+  margin-bottom:8px;
+}
+.p1 .tl-period{background:rgba(55,173,170,.15);color:var(--brand-300);border:1px solid rgba(55,173,170,.25)}
+.p2 .tl-period{background:rgba(247,144,9,.15);color:#fcd34d;border:1px solid rgba(247,144,9,.28)}
+.p3 .tl-period{background:rgba(158,119,237,.15);color:#c4b5fd;border:1px solid rgba(158,119,237,.28)}
+.tl-title{font-size:16px;font-weight:800;color:white;margin-bottom:6px;line-height:1.3}
+.tl-desc{font-size:12.5px;color:rgba(255,255,255,.7);line-height:1.62;margin-bottom:10px}
+.tl-kws{display:flex;flex-wrap:wrap;gap:5px}
+.tl-kw{
+  font-size:10.5px;padding:2.5px 8px;border-radius:6px;font-weight:600;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ═══════════════ SECTION 6: CLOSING ═══════════════ */
+#s6{
+  background:var(--grd-hero);
+  padding:36px 20px 64px;
+  position:relative;overflow:hidden;
+}
+#s6::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 60%,rgba(55,173,170,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.closing-inner{max-width:480px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.closing-bigicon{
+  font-size:54px;margin-bottom:16px;
+  animation:floatBig 3s ease-in-out infinite;
+}
+@keyframes floatBig{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.closing-70{
+  display:inline-block;
+  background:rgba(255,183,27,.12);color:var(--gold-400);
+  border:1px solid rgba(255,183,27,.3);
+  font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;
+  margin-bottom:14px;letter-spacing:.4px;
+}
+.closing-sub{
+  font-size:12.5px;color:rgba(255,255,255,.7);
+  line-height:1.7;margin-bottom:22px;
+}
+.closing-statements{
+  display:flex;flex-direction:column;gap:9px;margin-bottom:24px;
+  text-align:left;
+}
+.cs{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:12px 14px;
+  transition:all 250ms;
+}
+.cs:hover{background:rgba(255,255,255,.09);transform:translateX(4px);border-color:rgba(55,173,170,.22)}
+.cs-num{
+  width:30px;height:30px;flex-shrink:0;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand-500),var(--brand-700));
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:white;
+  box-shadow:0 4px 10px rgba(0,107,104,.4);
+}
+.cs-text{font-size:13px;color:rgba(255,255,255,.9);font-weight:500}
+.tagline-box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,183,27,.22);
+  border-radius:16px;padding:20px 16px;
+  box-shadow:var(--glow-gold);
+  margin-bottom:20px;
+}
+.tagline-main{
+  font-size:15px;font-weight:900;line-height:1.45;
+  background:linear-gradient(135deg,var(--gold-400) 0%,var(--gold-500) 50%,var(--gold-400) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200%;
+  animation:goldShine 3s linear infinite;
+  margin-bottom:8px;
+}
+@keyframes goldShine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.tagline-year{font-size:11px;color:rgba(255,255,255,.48)}
+.bidv-seal{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:12px 18px;
+}
+.seal-ico{
+  width:40px;height:40px;background:var(--brand-500);
+  color:white;font-weight:900;font-size:11.5px;
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:-.5px;box-shadow:0 4px 12px rgba(0,107,104,.5);
+}
+.seal-text{text-align:left}
+.seal-name{font-size:14px;font-weight:700;color:white}
+.seal-sub{font-size:10px;color:rgba(255,255,255,.48)}
+
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.sec-div{
+  height:2px;
+  background:linear-gradient(90deg,transparent 0%,rgba(55,173,170,.2) 40%,rgba(55,173,170,.2) 60%,transparent 100%);
+}
+
+/* ═══════════════ SCROLL ANIMATIONS ═══════════════ */
+.anim{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.anim.in{opacity:1;transform:translateY(0)}
+.anim[data-d="1"]{transition-delay:.1s}
+.anim[data-d="2"]{transition-delay:.2s}
+.anim[data-d="3"]{transition-delay:.3s}
+.anim[data-d="4"]{transition-delay:.4s}
+.anim[data-d="5"]{transition-delay:.5s}
+
+/* ═══════════════ UTILITIES ═══════════════ */
+.mt-12{margin-top:12px}
+.mt-16{margin-top:16px}
+.mb-16{margin-bottom:16px}
+
+/* ═══════════════ 3D ARCH DIAGRAM ═══════════════ */
+#s3{background:linear-gradient(180deg,#0d1e28 0%,#0a1628 100%)}
+.arch-diagram{
+  perspective:900px;margin:0 0 22px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.arch-row{
+  display:flex;align-items:center;gap:8px;
+}
+.arch-block{
+  border-radius:14px;padding:14px 12px;flex:1;color:white;
+  transform-style:preserve-3d;
+  transition:transform 400ms cubic-bezier(.2,.8,.2,1),box-shadow 400ms;
+  cursor:pointer;position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+}
+.arch-block:hover{transform:perspective(600px) rotateX(-6deg) rotateY(3deg) translateY(-4px)}
+.arch-cloud{
+  background:linear-gradient(145deg,#0086c9 0%,#0c4a6e 60%,#082f49 100%);
+  box-shadow:0 8px 24px rgba(0,134,201,.35),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.arch-cloud:hover{box-shadow:0 20px 40px rgba(0,134,201,.5)}
+.arch-priv{
+  background:linear-gradient(145deg,#a62c2a 0%,#7f1d1d 60%,#450a0a 100%);
+  box-shadow:0 8px 24px rgba(166,44,42,.35),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.arch-priv:hover{box-shadow:0 20px 40px rgba(166,44,42,.5)}
+.arch-onp{
+  background:linear-gradient(145deg,#b45309 0%,#78350f 60%,#451a03 100%);
+  box-shadow:0 8px 24px rgba(180,83,9,.35),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.arch-onp:hover{box-shadow:0 20px 40px rgba(180,83,9,.5)}
+.arch-glow{
+  position:absolute;top:-20px;right:-20px;
+  width:80px;height:80px;border-radius:50%;
+  filter:blur(20px);opacity:.4;pointer-events:none;
+}
+.arch-cloud .arch-glow{background:#38bdf8}
+.arch-priv  .arch-glow{background:#fca5a5}
+.arch-onp   .arch-glow{background:#fcd34d}
+.ab-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ab-icon{font-size:28px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+.ab-name{font-size:14px;font-weight:800;line-height:1.2}
+.ab-name span{display:block;font-size:10.5px;font-weight:400;opacity:.75;margin-top:1px}
+.ab-chips{display:flex;flex-wrap:wrap;gap:5px}
+.ab-chip{
+  font-size:10.5px;padding:2px 8px;border-radius:6px;font-weight:600;
+  background:rgba(255,255,255,.14);color:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.15);
+}
+.arch-arrow{
+  text-align:center;font-size:18px;color:var(--brand-400);
+  position:relative;flex-shrink:0;width:24px;
+  display:flex;align-items:center;justify-content:center;
+}
+.arch-arrow::before,.arch-arrow::after{
+  content:'';position:absolute;top:50%;left:50%;
+  width:2px;height:16px;background:var(--brand-400);
+  opacity:.45;
+}
+.arch-arrow::before{transform:translate(-50%,-50%) rotate(0deg)}
+.arch-arrow::after{display:none}
+
+/* 3D floating blocks for hero */
+.hero-3d-wrap{
+  position:relative;height:110px;margin-bottom:20px;
+  perspective:800px;
+}
+.hero-block{
+  position:absolute;
+  border-radius:14px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:10px;text-align:center;color:white;
+  transform-style:preserve-3d;font-weight:700;
+  box-shadow:0 16px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.hero-block .hb-ico{font-size:26px;margin-bottom:4px}
+.hero-block .hb-lbl{font-size:11px;line-height:1.2}
+.hb-a{width:90px;height:90px;background:linear-gradient(135deg,#0086c9,#0c4a6e);top:10px;left:10px;animation:float3d1 4s ease-in-out infinite;transform:perspective(800px) rotateX(15deg) rotateY(-12deg)}
+.hb-b{width:80px;height:80px;background:linear-gradient(135deg,#006b68,#004240);top:0;left:50%;margin-left:-40px;animation:float3d2 5s ease-in-out infinite;transform:perspective(800px) rotateX(10deg) rotateY(5deg)}
+.hb-c{width:85px;height:85px;background:linear-gradient(135deg,#a62c2a,#450a0a);top:15px;right:10px;animation:float3d3 4.5s ease-in-out infinite;transform:perspective(800px) rotateX(12deg) rotateY(14deg)}
+@keyframes float3d1{0%,100%{transform:perspective(800px) rotateX(15deg) rotateY(-12deg) translateY(0)}50%{transform:perspective(800px) rotateX(15deg) rotateY(-12deg) translateY(-12px)}}
+@keyframes float3d2{0%,100%{transform:perspective(800px) rotateX(10deg) rotateY(5deg) translateY(0)}50%{transform:perspective(800px) rotateX(10deg) rotateY(5deg) translateY(-10px)}}
+@keyframes float3d3{0%,100%{transform:perspective(800px) rotateX(12deg) rotateY(14deg) translateY(0)}50%{transform:perspective(800px) rotateX(12deg) rotateY(14deg) translateY(-14px)}}
+
+/* Enhanced ZT visual */
+.zt-ring-wrap{
+  display:flex;justify-content:center;margin:14px 0;
+  perspective:600px;
+}
+.zt-rings{
+  position:relative;width:160px;height:160px;
+  transform:perspective(600px) rotateX(25deg);
+}
+.zt-ring{
+  position:absolute;border-radius:50%;
+  border:2px solid;opacity:.7;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:white;
+}
+.zt-ring-1{inset:0;border-color:rgba(55,173,170,.7);background:rgba(55,173,170,.05);animation:ringPulse 3s ease-in-out infinite}
+.zt-ring-2{inset:18px;border-color:rgba(55,173,170,.55);background:rgba(55,173,170,.04);animation:ringPulse 3s ease-in-out .4s infinite}
+.zt-ring-3{inset:36px;border-color:rgba(55,173,170,.4);background:rgba(55,173,170,.06);animation:ringPulse 3s ease-in-out .8s infinite}
+.zt-ring-4{inset:54px;border-color:rgba(55,173,170,.55);background:rgba(55,173,170,.08);animation:ringPulse 3s ease-in-out 1.2s infinite}
+.zt-center{
+  position:absolute;inset:65px;
+  background:linear-gradient(135deg,var(--brand-500),var(--brand-700));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:18px;box-shadow:0 0 24px rgba(55,173,170,.6);
+  animation:ringGlow 2s ease-in-out infinite;
+}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.03);opacity:1}}
+@keyframes ringGlow{0%,100%{box-shadow:0 0 16px rgba(55,173,170,.5)}50%{box-shadow:0 0 32px rgba(55,173,170,.9)}}
+
+/* Enhanced pillar 3D */
+.pillar{transform-style:preserve-3d;transition:all 320ms cubic-bezier(.2,.8,.2,1)}
+.pillar:hover{transform:perspective(700px) rotateX(-3deg) rotateY(2deg) translateY(-4px)}
+
+/* ═══════════════ SECTION 7: AUDIENCE INTERACTION ═══════════════ */
+#s7{background:linear-gradient(180deg,#0a1628 0%,#001a10 100%)}
+.interact-wrap{padding:28px 16px 36px;max-width:480px;margin:0 auto;text-align:center}
+.interact-lead{
+  font-size:13px;color:rgba(255,255,255,.68);line-height:1.65;margin-bottom:24px;
+}
+.heart-counter{
+  margin:0 auto 22px;display:flex;align-items:baseline;
+  gap:8px;justify-content:center;
+}
+#heartCount{
+  font-size:60px;font-weight:900;
+  background:linear-gradient(135deg,#fb7185,#e11d48);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1;
+  transition:transform .15s;
+}
+#heartCount.pop{animation:countPop .25s ease-out}
+@keyframes countPop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+.hc-unit{font-size:16px;color:rgba(255,255,255,.55);font-weight:500}
+.heart-btn-zone{
+  position:relative;min-height:110px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+}
+.heart-btn{
+  background:linear-gradient(135deg,#e11d48,#9f1239);
+  border:none;border-radius:999px;cursor:pointer;
+  padding:18px 44px;
+  display:flex;align-items:center;gap:10px;
+  font-family:inherit;font-size:16px;font-weight:800;color:white;
+  letter-spacing:.3px;
+  box-shadow:0 0 0 0 rgba(225,29,72,.4),0 10px 28px rgba(225,29,72,.5);
+  transition:transform 120ms,box-shadow 120ms;
+  position:relative;z-index:2;
+  animation:heartBtnPulse 2.2s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+@keyframes heartBtnPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(225,29,72,.4),0 10px 28px rgba(225,29,72,.5)}
+  55%{box-shadow:0 0 0 16px rgba(225,29,72,.0),0 10px 28px rgba(225,29,72,.7)}
+}
+.heart-btn:active{transform:scale(.92);box-shadow:0 4px 12px rgba(225,29,72,.4)}
+.hb-ico{font-size:26px}
+.float-heart{
+  position:fixed;pointer-events:none;z-index:9999;
+  animation:floatUp 1.3s ease-out forwards;
+  user-select:none;
+}
+@keyframes floatUp{
+  0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}
+  50%{opacity:.9}
+  100%{opacity:0;transform:translate(var(--dx,0px),-220px) scale(.4) rotate(var(--rot,15deg))}
+}
+.reactions{
+  display:flex;justify-content:center;gap:10px;margin-bottom:20px;
+}
+.react-btn{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:12px;min-width:62px;cursor:pointer;
+  font-size:22px;transition:all 180ms;
+  -webkit-tap-highlight-color:transparent;
+}
+.react-btn:hover{background:rgba(255,255,255,.1);transform:scale(1.08)}
+.react-btn:active{transform:scale(.9)}
+.react-btn.bumped{animation:reactBump .25s ease-out}
+@keyframes reactBump{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.react-cnt{font-size:13px;font-weight:700;color:rgba(255,255,255,.8)}
+.wave-row{
+  display:flex;justify-content:center;gap:3px;
+  margin:16px 0 6px;
+}
+.wc{
+  font-size:13px;font-weight:700;color:var(--brand-300);
+  animation:wc 1.6s ease-in-out infinite;
+}
+.wc:nth-child(1){animation-delay:0s}     .wc:nth-child(2){animation-delay:.1s}
+.wc:nth-child(3){animation-delay:.2s}    .wc:nth-child(4){animation-delay:.3s}
+.wc:nth-child(5){animation-delay:.4s}    .wc:nth-child(6){animation-delay:.5s}
+.wc:nth-child(7){animation-delay:.6s}    .wc:nth-child(8){animation-delay:.7s}
+.wc:nth-child(9){animation-delay:.8s}    .wc:nth-child(10){animation-delay:.9s}
+.wc:nth-child(11){animation-delay:1s}
+@keyframes wc{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ═══════════════ SECTION 8: THANK YOU ═══════════════ */
+#s8{
+  background:linear-gradient(180deg,#001a10 0%,#000c0b 100%);
+  overflow:hidden;position:relative;
+}
+#s8::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%,rgba(55,173,170,.18) 0%,transparent 68%),
+             radial-gradient(ellipse at 80% 90%,rgba(255,183,27,.12) 0%,transparent 55%);
+  pointer-events:none;
+}
+.ty-inner{
+  padding:44px 20px 0;
+  max-width:480px;margin:0 auto;
+  text-align:center;position:relative;z-index:1;
+}
+.ty-bigicon{font-size:64px;animation:floatBig 3s ease-in-out infinite;margin-bottom:14px}
+.ty-hearts-row{display:flex;justify-content:center;gap:10px;margin:10px 0 18px}
+.ty-heart{font-size:24px;animation:tyHeart 2.5s ease-in-out infinite}
+.ty-heart:nth-child(1){animation-delay:0s}
+.ty-heart:nth-child(2){animation-delay:.3s}
+.ty-heart:nth-child(3){animation-delay:.6s}
+.ty-heart:nth-child(4){animation-delay:.9s}
+.ty-heart:nth-child(5){animation-delay:1.2s}
+@keyframes tyHeart{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.15)}}
+.ty-title{
+  font-size:30px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px;
+  background:linear-gradient(135deg,#fff 10%,var(--brand-300) 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.ty-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--n-900);font-size:12px;font-weight:800;
+  padding:6px 18px;border-radius:999px;margin:8px 0 16px;
+  box-shadow:var(--glow-gold);letter-spacing:.5px;
+}
+.ty-desc{font-size:13px;color:rgba(255,255,255,.72);line-height:1.72;margin-bottom:22px}
+.ty-quote-box{
+  background:rgba(55,173,170,.07);
+  border:1px solid rgba(55,173,170,.2);
+  border-radius:16px;padding:20px 18px;margin-bottom:24px;
+  position:relative;
+}
+.ty-quote-mark{
+  position:absolute;top:-10px;left:14px;
+  font-size:52px;color:var(--brand-300);opacity:.5;
+  font-family:Georgia,serif;line-height:1;
+}
+.ty-quote-text{
+  font-size:14.5px;font-style:italic;color:white;
+  line-height:1.7;font-weight:600;
+}
+.ty-seal{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:14px 20px;margin-bottom:0;
+}
+.ty-seal-ico{
+  width:48px;height:48px;background:var(--brand-500);
+  color:white;font-weight:900;font-size:12px;
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:-.5px;box-shadow:0 4px 16px rgba(0,107,104,.55);flex-shrink:0;
+}
+.ty-seal-name{font-size:13px;font-weight:700;color:white;text-align:left}
+.ty-seal-sub{font-size:10px;color:rgba(255,255,255,.48);text-align:left}
+.ty-bottom{
+  margin-top:28px;
+  background:var(--grd-nav);
+  border-top:1px solid rgba(55,173,170,.2);
+  padding:18px 20px 32px;
+  padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));
+}
+.ty-bottom-main{
+  font-size:13px;font-weight:800;letter-spacing:.8px;color:var(--gold-400);
+  text-transform:uppercase;margin-bottom:5px;text-align:center;
+}
+.ty-bottom-sub{font-size:10.5px;color:rgba(255,255,255,.4);text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ════════ TOP NAV ════════ -->
+<header class="top-nav">
+  <div class="nav-logo">
+    <div class="nav-icon">BIDV</div>
+    <div class="nav-info">
+      <div class="nav-name">Đa Đám Mây Lai</div>
+      <div class="nav-sub">Công Đoàn BIDV · Hiến Kế 2026</div>
+    </div>
+  </div>
+  <div class="nav-badge">🏆 Hiến Kế</div>
+</header>
+
+<!-- ════════ SECTION NAV ════════ -->
+<nav class="sec-nav" id="secNav">
+  <button class="sec-btn active" data-target="s1">🔥 Mở Đầu</button>
+  <button class="sec-btn" data-target="s2">📜 Bối Cảnh</button>
+  <button class="sec-btn" data-target="s3">⚙️ Giải Pháp</button>
+  <button class="sec-btn" data-target="s4">🌐 Hiến Kế 3P</button>
+  <button class="sec-btn" data-target="s5">🗺️ Lộ Trình</button>
+  <button class="sec-btn" data-target="s6">🚀 Kết Thúc</button>
+  <button class="sec-btn" data-target="s7">💝 Ủng Hộ</button>
+  <button class="sec-btn" data-target="s8">🙏 Cảm Ơn</button>
+</nav>
+
+<!-- ════════════════════════════════════════
+     SECTION 1 — HERO / MỞ ĐẦU
+════════════════════════════════════════ -->
+<section id="s1">
+  <div class="hero-inner">
+
+    <!-- 3D Floating Blocks -->
+    <div class="hero-3d-wrap">
+      <div class="hero-block hb-a">
+        <div class="hb-ico">☁️</div>
+        <div class="hb-lbl">Public<br>Cloud</div>
+      </div>
+      <div class="hero-block hb-b">
+        <div class="hb-ico">🔒</div>
+        <div class="hb-lbl">Private<br>Cloud</div>
+      </div>
+      <div class="hero-block hb-c">
+        <div class="hb-ico">🏛️</div>
+        <div class="hb-lbl">On-<br>Prem</div>
+      </div>
+    </div>
+
+    <div class="hero-tag">⭐ Hiến Kế Sáng Tạo · Công Đoàn BIDV 2026</div>
+
+    <h1 class="hero-h1">ĐA ĐÁM MÂY LAI</h1>
+    <p class="hero-h2">"Kiến Tạo Hạ Tầng Số An Toàn, Linh Hoạt"</p>
+    <p class="hero-desc">
+      Một giao dịch chậm vài giây — <strong>có thể mất một khách hàng</strong>.<br>
+      Một hệ thống gián đoạn vài phút — <strong>có thể đánh đổi bằng hàng triệu niềm tin</strong>.<br>
+      <em>Hôm nay BIDV mang đến một lời giải.</em>
+    </p>
+
+    <!-- Flip Cards: Problem → Solution -->
+    <div class="flip-grid" id="flipGrid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="f-icon">⚡</div><div class="f-word">QUÁ TẢI!</div></div>
+          <div class="flip-back"><div class="f-icon">☁️</div><div class="f-word">Hybrid Multi-cloud</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="f-icon">💸</div><div class="f-word">LÃNG PHÍ!</div></div>
+          <div class="flip-back"><div class="f-icon">🤖</div><div class="f-word">AI Ready &amp; FinOps</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="f-icon">🐢</div><div class="f-word">CHẬM!</div></div>
+          <div class="flip-back"><div class="f-icon">🛡️</div><div class="f-word">Zero Trust</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="f-icon">🧱</div><div class="f-word">KHÓ MỞ RỘNG!</div></div>
+          <div class="flip-back"><div class="f-icon">📈</div><div class="f-word">Auto Scaling</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-val" data-count="40">0%</div>
+        <div class="h-stat-lbl">Giảm thời gian<br>ra mắt dịch vụ mới</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val" data-count="56">0%</div>
+        <div class="h-stat-lbl">Tăng trưởng<br>người dùng & bán chéo</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val" style="font-size:22px">3P</div>
+        <div class="h-stat-lbl">Chiến lược<br>Policy–Platform–People</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val">3</div>
+        <div class="h-stat-lbl">Giai đoạn<br>2026 → Tầm nhìn 2045</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 2 — BỐI CẢNH CHIẾN LƯỢC
+════════════════════════════════════════ -->
+<section id="s2">
+  <div class="pane">
+
+    <div class="sec-label anim">📜 Phần 2</div>
+    <h2 class="sec-title anim" data-d="1">Động Lực Chiến Lược &amp; Vị Thế Tiên Phong</h2>
+    <p class="sec-sub anim" data-d="2">Điện toán đám mây không còn là xu hướng công nghệ — đây là <strong>hạ tầng chiến lược</strong> của nền kinh tế số và AI quốc gia.</p>
+
+    <div class="quote-block anim" data-d="2">
+      <p class="quote-text">"Cloud và AI là nền tảng tiên quyết cho tương lai số quốc gia. Và ngành ngân hàng — chính là nơi phải chuyển đổi nhanh nhất. Không chỉ để tăng tốc… mà còn để bảo vệ niềm tin của hàng triệu khách hàng."</p>
+    </div>
+
+    <div class="anim" data-d="3">
+      <div class="policy-card">
+        <div class="p-ico">⚖️</div>
+        <div>
+          <div class="p-title">Nghị quyết 57 — Bộ Chính Trị</div>
+          <div class="p-desc">Xác định Cloud và AI là nền tảng tiên quyết cho chuyển đổi số quốc gia. Ngân hàng là lĩnh vực ưu tiên hàng đầu.</div>
+        </div>
+      </div>
+      <div class="policy-card">
+        <div class="p-ico">📋</div>
+        <div>
+          <div class="p-title">Quyết định 1121 — Thủ Tướng Chính Phủ</div>
+          <div class="p-desc">Chỉ đạo đẩy nhanh ứng dụng điện toán đám mây trong hệ thống ngân hàng — Cloud là hạ tầng chiến lược quốc gia.</div>
+        </div>
+      </div>
+      <div class="policy-card">
+        <div class="p-ico">🏦</div>
+        <div>
+          <div class="p-title">Chiến lược NHNN — Ngân hàng số 2025–2030</div>
+          <div class="p-desc">100% giao dịch số, AI-driven banking, bảo mật đa lớp. Cloud là nền tảng không thể thiếu cho mọi mục tiêu.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass anim mt-16" data-d="4">
+      <div style="font-size:13px;font-weight:700;color:var(--gold-400);margin-bottom:10px">💡 Vì sao ngành Ngân hàng phải đi đầu?</div>
+      <div class="bullet-list">
+        <div class="bullet-item"><span class="bullet-dot">✦</span><span>Hàng triệu giao dịch mỗi giây — uptime 100% là bắt buộc</span></div>
+        <div class="bullet-item"><span class="bullet-dot">✦</span><span>Dữ liệu khách hàng nhạy cảm — bảo mật & chủ quyền dữ liệu tuyệt đối</span></div>
+        <div class="bullet-item"><span class="bullet-dot">✦</span><span>Tốc độ đổi mới sản phẩm — cạnh tranh Fintech & BigTech toàn cầu</span></div>
+        <div class="bullet-item"><span class="bullet-dot">✦</span><span>Tuân thủ pháp lý chặt chẽ — cần hạ tầng linh hoạt + kiểm soát đầy đủ</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 3 — GIẢI PHÁP KỸ THUẬT & QUẢN TRỊ
+════════════════════════════════════════ -->
+<section id="s3">
+  <div class="pane">
+
+    <div class="sec-label anim">⚙️ Phần 3</div>
+    <h2 class="sec-title anim" data-d="1">Giải Pháp Kỹ Thuật &amp; Quản Trị</h2>
+    <p class="sec-sub anim" data-d="2">Kiến trúc <strong>Hybrid Multi-cloud</strong> — kết hợp linh hoạt hạ tầng truyền thống, Private Cloud và Public Cloud với mô hình Dual+X tránh phụ thuộc một nhà cung cấp.</p>
+
+    <!-- 3-Zone Architecture -->
+    <div style="font-size:12.5px;font-weight:700;color:var(--brand-300);margin-bottom:10px" class="anim" data-d="2">
+      🏗️ Kiến Trúc 3 Vùng Triển Khai
+    </div>
+    <div class="zone-grid anim" data-d="3">
+      <div class="zone-card zone-onprem">
+        <div class="zone-header">
+          <span class="zone-icon">🏛️</span>
+          <div class="zone-name">Hạ Tầng Truyền Thống<span>On-Premises</span></div>
+        </div>
+        <div class="zone-desc">Core banking, dữ liệu siêu nhạy cảm — chủ quyền dữ liệu tuyệt đối, tuân thủ nghiêm ngặt</div>
+        <div class="zone-tags">
+          <span class="z-tag">Core Banking</span>
+          <span class="z-tag">Dữ liệu M4</span>
+          <span class="z-tag">Compliance</span>
+        </div>
+      </div>
+      <div class="zone-card zone-private">
+        <div class="zone-header">
+          <span class="zone-icon">🔒</span>
+          <div class="zone-name">Private Cloud<span>Đám Mây Riêng</span></div>
+        </div>
+        <div class="zone-desc">Hệ thống trọng yếu, dữ liệu quan trọng — bảo đảm quy định chủ quyền dữ liệu quốc gia</div>
+        <div class="zone-tags">
+          <span class="z-tag">Hệ thống trọng yếu</span>
+          <span class="z-tag">Dữ liệu M3</span>
+          <span class="z-tag">High Security</span>
+        </div>
+      </div>
+      <div class="zone-card zone-public">
+        <div class="zone-header">
+          <span class="zone-icon">☁️</span>
+          <div class="zone-name">Public Cloud<span>Đám Mây Công Cộng</span></div>
+        </div>
+        <div class="zone-desc">Tính năng mới, ứng dụng AI, Big Data — mở rộng tức thời khi giao dịch tăng đột biến</div>
+        <div class="zone-tags">
+          <span class="z-tag">AI &amp; Big Data</span>
+          <span class="z-tag">Auto Scaling</span>
+          <span class="z-tag">Dual+X Model</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zero Trust -->
+    <div class="zt-box anim" data-d="3">
+      <div class="zt-title">
+        🛡️ Mô Hình Zero Trust
+        <span class="zt-badge">7 Lớp</span>
+      </div>
+      <div class="zt-desc"><strong>"KHÔNG TIN TƯỞNG MẶC ĐỊNH"</strong> — Mọi người dùng, mọi thiết bị, mọi truy cập đều phải xác thực liên tục.</div>
+      <div class="zt-layers">
+        <div class="zt-layer"><div class="zt-dot"></div><span>Xác thực đa yếu tố liên tục (MFA + Biometric)</span></div>
+        <div class="zt-layer"><div class="zt-dot"></div><span>Phân quyền theo ngữ cảnh (ReBAC / ABAC)</span></div>
+        <div class="zt-layer"><div class="zt-dot"></div><span>Giám sát SOC 24/7 — AI threat detection real-time</span></div>
+        <div class="zt-layer"><div class="zt-dot"></div><span>Guardrails Policy-as-Code tự động hóa</span></div>
+      </div>
+    </div>
+
+    <!-- FinOps -->
+    <div class="finops-box anim" data-d="4">
+      <div class="finops-icon">💰</div>
+      <div style="flex:1">
+        <div class="finops-title">FinOps — Quản Trị Chi Phí Thông Minh</div>
+        <div class="finops-desc">Giám sát tài nguyên real-time, tối ưu chi phí, loại bỏ lãng phí. Thay đổi tư duy tài chính IT.</div>
+        <div class="capex-arrow">
+          <span class="arrow-from">CapEx</span>
+          <span style="color:rgba(255,255,255,.5)">→</span>
+          <span class="arrow-to">OpEx</span>
+          <span style="font-size:11px;color:rgba(255,255,255,.5);font-weight:500">Pay-as-you-go</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpi-row anim" data-d="4">
+      <div class="kpi-card kpi-neg">
+        <div class="kpi-val">↓40%</div>
+        <div class="kpi-lbl">Thời gian ra mắt<br>dịch vụ mới</div>
+      </div>
+      <div class="kpi-card kpi-pos">
+        <div class="kpi-val">↑56%</div>
+        <div class="kpi-lbl">Tăng trưởng<br>người dùng &amp; bán chéo</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 4 — HIẾN KẾ TOÀN NGÀNH — 3P
+════════════════════════════════════════ -->
+<section id="s4">
+  <div class="pane">
+
+    <div class="sec-label anim">🌐 Phần 4</div>
+    <h2 class="sec-title anim" data-d="1">Hiến Kế Toàn Ngành — Chiến Lược 3P</h2>
+    <p class="sec-sub anim" data-d="2">BIDV đề xuất xây dựng <strong>Hệ Sinh Thái Đám Mây Dùng Chung</strong> cho toàn ngành Ngân hàng Việt Nam dựa trên ba trụ cột.</p>
+
+    <div class="pillar-grid">
+
+      <!-- P1: Policy -->
+      <div class="pillar pillar-p anim" data-d="2">
+        <div class="pillar-big">P</div>
+        <div class="pillar-code">📜 P Thứ Nhất — POLICY</div>
+        <div class="pillar-name">Chính Sách &amp; Quản Lý</div>
+        <div class="pillar-desc">NHNN cùng Hiệp hội ngân hàng xây dựng cơ chế <strong>"Banking Cloud Certified"</strong> — chứng nhận nhà cung cấp Cloud đủ điều kiện cho toàn ngành.</div>
+        <div class="pillar-items">
+          <div class="pillar-item">⚖️&nbsp;<span><strong>Banking Cloud Certified</strong> — Chuẩn hóa nhà cung cấp</span></div>
+          <div class="pillar-item">⚡&nbsp;<span>Rút ngắn thời gian đánh giá, tăng tốc triển khai</span></div>
+          <div class="pillar-item">✅&nbsp;<span>Đảm bảo tuân thủ pháp lý &amp; chủ quyền dữ liệu</span></div>
+        </div>
+      </div>
+
+      <!-- P2: Platform -->
+      <div class="pillar pillar-pl anim" data-d="3">
+        <div class="pillar-big">P</div>
+        <div class="pillar-code">🔷 P Thứ Hai — PLATFORM</div>
+        <div class="pillar-name">Hạ Tầng &amp; Năng Lực Dùng Chung</div>
+        <div class="pillar-desc">Lá chắn số ngành ngân hàng cùng Kho dữ liệu &amp; AI dùng chung. Biến dữ liệu từ "ốc đảo" cô lập thành <strong>"kháng thể" chung</strong> của toàn ngành.</div>
+        <div class="pillar-items">
+          <div class="pillar-item">🛡️&nbsp;<span><strong>Lá chắn số</strong> — SOC liên ngành 24/7</span></div>
+          <div class="pillar-item">🤖&nbsp;<span><strong>AI dùng chung</strong> — Phân tích dữ liệu toàn ngành</span></div>
+          <div class="pillar-item">🔗&nbsp;<span>Khi 1 ngân hàng bị tấn công — cả ngành có lá chắn ngay</span></div>
+        </div>
+      </div>
+
+      <!-- P3: People -->
+      <div class="pillar pillar-pe anim" data-d="4">
+        <div class="pillar-big">P</div>
+        <div class="pillar-code">🎓 P Thứ Ba — PEOPLE</div>
+        <div class="pillar-name">Con Người &amp; Văn Hóa</div>
+        <div class="pillar-desc">Công nghệ có thể mua — nhưng <strong>năng lực số phải được đào tạo</strong>. Cloud Lab thực chiến kết nối Ngân hàng — Đại học — Doanh nghiệp công nghệ.</div>
+        <div class="pillar-items">
+          <div class="pillar-item">🏫&nbsp;<span><strong>Cloud Lab thực chiến</strong> — Thực hành thực tế</span></div>
+          <div class="pillar-item">🤝&nbsp;<span>Ngân hàng × Đại học × Doanh nghiệp công nghệ</span></div>
+          <div class="pillar-item">🚀&nbsp;<span>Đào tạo nguồn nhân lực số cho tương lai</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="glass mt-16 anim" data-d="5" style="border-color:rgba(255,183,27,.22);border-left:3px solid var(--gold-500)">
+      <div style="font-size:13px;font-weight:800;color:var(--gold-400);margin-bottom:8px">🌟 Tầm nhìn Hệ Sinh Thái</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.7">
+        Cloud giúp chúng ta biến dữ liệu từ những <em>"ốc đảo"</em> cô lập thành <strong style="color:white">"kháng thể"</strong> chung. Khi một ngân hàng bị tấn công, <strong style="color:white">cả ngành sẽ có lá chắn ngay lập tức</strong> nhờ AI trên Cloud dùng chung — bảo vệ hàng chục triệu người dân Việt Nam.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 5 — LỘ TRÌNH PHÁT TRIỂN
+════════════════════════════════════════ -->
+<section id="s5">
+  <div class="pane">
+
+    <div class="sec-label anim">🗺️ Phần 5</div>
+    <h2 class="sec-title anim" data-d="1">Lộ Trình Phát Triển Toàn Ngành</h2>
+    <p class="sec-sub anim" data-d="2">Ba giai đoạn hiện thực hóa Chiến lược 3P — từ Open Banking đến Sovereign Cloud, hướng tới <strong>tầm nhìn 2045</strong>.</p>
+
+    <div class="timeline">
+
+      <!-- Phase 1 -->
+      <div class="tl-item p1 anim" data-d="2">
+        <div class="tl-dot tl-dot-1">🌱</div>
+        <div class="tl-content">
+          <span class="tl-period">Giai Đoạn 1 · 2026–2027</span>
+          <div class="tl-title">Khai Mở Open Banking</div>
+          <div class="tl-desc">Xóa bỏ "ốc đảo" dữ liệu. Chuẩn hóa API, kết nối toàn ngành ngân hàng Việt Nam. Thiết lập nền tảng cho mọi dịch vụ số tiếp theo.</div>
+          <div class="tl-kws">
+            <span class="tl-kw">Open Banking</span>
+            <span class="tl-kw">API Chuẩn hóa</span>
+            <span class="tl-kw">Kết nối toàn ngành</span>
+            <span class="tl-kw">Banking Cloud Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="tl-item p2 anim" data-d="3">
+        <div class="tl-dot tl-dot-2">🚀</div>
+        <div class="tl-content">
+          <span class="tl-period">Giai Đoạn 2 · 2028–2030</span>
+          <div class="tl-title">Kỷ Nguyên MyData &amp; Tài Chính Nhúng</div>
+          <div class="tl-desc">Liên kết dữ liệu quốc gia (VNeID) và dữ liệu phi tài chính trên Cloud dùng chung. AI/Big Data chấm điểm tín dụng thế hệ mới. Embedded Finance vào mọi dịch vụ qua API.</div>
+          <div class="tl-kws">
+            <span class="tl-kw">MyData</span>
+            <span class="tl-kw">VNeID</span>
+            <span class="tl-kw">Embedded Finance</span>
+            <span class="tl-kw">AI Credit Score</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="tl-item p3 anim" data-d="4">
+        <div class="tl-dot tl-dot-3">🏆</div>
+        <div class="tl-content">
+          <span class="tl-period">Giai Đoạn 3 · 2030 – Tầm Nhìn 2045</span>
+          <div class="tl-title">Lá Chắn Số &amp; Đám Mây Chủ Quyền</div>
+          <div class="tl-desc">Lá chắn số toàn ngành để hợp lực phòng thủ, chia sẻ thức thời dấu hiệu tấn công. Sovereign Cloud (Đám mây chủ quyền) từ nhà cung cấp nội địa — dữ liệu nhạy cảm của công dân Việt Nam được lưu trữ an toàn.</div>
+          <div class="tl-kws">
+            <span class="tl-kw">Lá Chắn Số</span>
+            <span class="tl-kw">Sovereign Cloud</span>
+            <span class="tl-kw">Đám Mây Chủ Quyền</span>
+            <span class="tl-kw">Tầm nhìn 2045</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="glass anim" data-d="5" style="margin-top:4px">
+      <div style="font-size:13px;font-weight:700;color:var(--brand-300);margin-bottom:8px">🎯 Mục Tiêu Đến 2045</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.72">
+        Hạ tầng Đa đám mây lai sẽ trở thành <strong style="color:white">hạ tầng số linh hoạt và an toàn</strong> — đưa tài chính Việt Nam bứt phá trên bản đồ số toàn cầu, phụng sự 100 triệu người dân Việt Nam.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 6 — KẾT THÚC
+════════════════════════════════════════ -->
+<section id="s6">
+  <div class="closing-inner">
+
+    <div class="sec-label anim" style="justify-content:center">🚀 Phần 6 — Kết Thúc</div>
+    <h2 class="sec-title anim" data-d="1" style="text-align:center">Sẵn Sàng Cất Cánh!</h2>
+
+    <div class="closing-bigicon anim" data-d="1">🌏</div>
+
+    <div class="closing-70 anim" data-d="2">🏛️ Gần 70 năm phụng sự đất nước</div>
+    <p class="closing-sub anim" data-d="2">
+      BIDV luôn <strong>tiên phong</strong> trong chuyển đổi số ngành ngân hàng. BIDV sẵn sàng đồng hành cùng Ngân hàng Nhà nước và các đơn vị liên quan để xây dựng hệ sinh thái số dùng chung cho toàn ngành.
+    </p>
+
+    <div class="closing-statements">
+      <div class="cs anim" data-d="2"><div class="cs-num">1</div><div class="cs-text">Dữ liệu thông minh hơn 🧠</div></div>
+      <div class="cs anim" data-d="2"><div class="cs-num">2</div><div class="cs-text">Tăng tốc chuyển đổi số ⚡</div></div>
+      <div class="cs anim" data-d="3"><div class="cs-num">3</div><div class="cs-text">Linh hoạt hạ tầng số ☁️</div></div>
+      <div class="cs anim" data-d="3"><div class="cs-num">4</div><div class="cs-text">Lá chắn số an toàn 🛡️</div></div>
+      <div class="cs anim" data-d="4"><div class="cs-num">5</div><div class="cs-text">Tối ưu chi phí vận hành 💰</div></div>
+    </div>
+
+    <div class="tagline-box anim" data-d="4">
+      <div class="tagline-main">"BIDV BỨT PHÁ CÙNG ĐÁM MÂY<br>— NÂNG TẦM TÀI CHÍNH VIỆT!"</div>
+      <div class="tagline-year">Ngân hàng TMCP Đầu tư và Phát triển Việt Nam · Hiến Kế 2026</div>
+    </div>
+
+    <div class="bidv-seal anim" data-d="5">
+      <div class="seal-ico">BIDV</div>
+      <div class="seal-text">
+        <div class="seal-name">Đa Đám Mây Lai</div>
+        <div class="seal-sub">Công Đoàn BIDV · Hiến Kế Sáng Tạo 2026</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+(function(){
+
+/* ── CountUp animation ── */
+function countUp(el){
+  var target = parseInt(el.dataset.count, 10);
+  var start = performance.now();
+  var dur = 1800;
+  function step(now){
+    var p = Math.min((now - start) / dur, 1);
+    var ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target) + '%';
+    if(p < 1) requestAnimationFrame(step);
+    else el.textContent = target + '%';
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── Scroll-in animation ── */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.dataset.count) countUp(e.target);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.anim, [data-count]').forEach(function(el){ io.observe(el); });
+
+/* ── Auto-flip cards ── */
+setTimeout(function(){
+  document.querySelectorAll('.flip-card').forEach(function(c, i){
+    setTimeout(function(){ c.classList.add('flipped'); }, i * 300);
+  });
+}, 2000);
+
+/* ── Section nav highlight on scroll ── */
+var secIds = ['s1','s2','s3','s4','s5','s6'];
+var navBtns = document.querySelectorAll('.sec-btn');
+var secObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting && e.intersectionRatio >= 0.3){
+      var id = e.target.id;
+      navBtns.forEach(function(b){
+        var active = b.dataset.target === id;
+        b.classList.toggle('active', active);
+        if(active){
+          b.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+        }
+      });
+    }
+  });
+}, { threshold: 0.3 });
+secIds.forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) secObs.observe(el);
+});
+
+/* ── Nav click: smooth scroll ── */
+navBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var target = document.getElementById(btn.dataset.target);
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+
+/* ── Initial countup for visible elements ── */
+document.querySelectorAll('[data-count]').forEach(function(el){
+  var rect = el.getBoundingClientRect();
+  if(rect.top < window.innerHeight) countUp(el);
+});
+
+})();
+</script>
+</body>
+</html>
