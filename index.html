@@ -468,6 +468,119 @@ body{
   border:1px solid rgba(255,255,255,.12);
 }
 
+/* ═══════════════ OPEN BANKING DEMO (Giai đoạn 1) ═══════════════ */
+.ob-demo{
+  background:rgba(0,66,64,.1);border:1px solid rgba(55,173,170,.22);
+  border-radius:14px;padding:14px;margin-top:14px;
+}
+.ob-demo-label{
+  font-size:10.5px;font-weight:800;letter-spacing:.7px;
+  color:var(--brand-300);text-transform:uppercase;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+/* Toggle */
+.ob-toggle-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.ob-tog{
+  padding:8px 6px;border-radius:9px;border:none;
+  font-size:10.5px;font-weight:700;cursor:pointer;font-family:inherit;
+  transition:all .2s;-webkit-tap-highlight-color:transparent;
+}
+.ob-tog-before{background:rgba(217,45,32,.1);color:#fca5a5;border:1px solid rgba(217,45,32,.25)}
+.ob-tog-before.ob-active{background:rgba(217,45,32,.3);color:white;border-color:rgba(217,45,32,.5)}
+.ob-tog-after{background:rgba(7,148,85,.08);color:#86efac;border:1px solid rgba(7,148,85,.2)}
+.ob-tog-after.ob-active{background:rgba(7,148,85,.28);color:white;border-color:rgba(7,148,85,.45)}
+/* Views */
+.ob-view{display:none}
+.ob-view.ob-active{display:block}
+/* Before view */
+.ob-before-label{
+  font-size:10.5px;color:#fca5a5;text-align:center;
+  font-weight:700;margin-bottom:10px;
+}
+.ob-islands{display:flex;justify-content:center;gap:6px;margin-bottom:12px}
+.ob-island{
+  flex:1;max-width:56px;
+  background:rgba(217,45,32,.08);border:1.5px dashed rgba(217,45,32,.35);
+  border-radius:10px;padding:8px 4px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:20px;
+}
+.ob-island span{font-size:8px;color:rgba(255,255,255,.55);font-weight:700}
+.ob-island-x{font-size:9px;color:#f87171;font-weight:800;margin-top:1px}
+/* After view */
+.ob-flow{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:10px}
+.ob-flow-app{
+  background:rgba(55,173,170,.1);border:1.5px solid rgba(55,173,170,.3);
+  border-radius:10px;padding:8px 16px;
+  font-size:11.5px;font-weight:700;color:var(--brand-300);
+  transition:all .3s;
+}
+.ob-flow-app.ob-lit{background:rgba(55,173,170,.25);box-shadow:0 0 14px rgba(55,173,170,.4)}
+.ob-flow-arrow{
+  font-size:14px;color:rgba(55,173,170,.4);line-height:1.4;
+  transition:color .3s;
+}
+.ob-flow-arrow.ob-lit{color:var(--brand-300)}
+.ob-flow-gw{
+  background:rgba(55,173,170,.07);border:1.5px solid rgba(55,173,170,.25);
+  border-radius:10px;padding:8px 12px;margin-bottom:2px;
+  font-size:10.5px;font-weight:700;color:rgba(255,255,255,.85);
+  text-align:center;width:100%;box-sizing:border-box;
+  transition:all .3s;
+}
+.ob-flow-gw.ob-lit{
+  background:rgba(55,173,170,.2);border-color:var(--brand-300);
+  box-shadow:0 0 16px rgba(55,173,170,.35);
+}
+.ob-req-tag{
+  font-size:8.5px;font-family:monospace;color:rgba(255,255,255,.4);
+  margin-bottom:4px;text-align:center;transition:color .3s;letter-spacing:.3px;
+}
+.ob-req-tag.ob-lit{color:var(--gold-400)}
+.ob-banks-row{display:flex;justify-content:center;gap:5px;width:100%}
+.ob-bank{
+  flex:1;max-width:58px;
+  background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:6px 3px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:18px;transition:all .35s;
+}
+.ob-bank span{font-size:7.5px;color:rgba(255,255,255,.5);font-weight:700}
+.ob-bank.ob-lit{
+  background:rgba(55,173,170,.15);border-color:var(--brand-300);
+  box-shadow:0 0 10px rgba(55,173,170,.3);
+}
+.ob-bank.ob-done{background:rgba(7,148,85,.12);border-color:rgba(7,148,85,.4)}
+/* Response */
+.ob-resp-box{
+  background:rgba(0,0,0,.28);border-radius:8px;padding:10px 12px;
+  margin-top:10px;animation:obFadeIn .4s ease;
+}
+.ob-resp-line{font-size:10px;color:rgba(255,255,255,.75);line-height:1.9}
+.ob-resp-code{font-family:monospace;color:var(--brand-300);font-size:9px}
+.ob-resp-line strong{color:var(--gold-400)}
+/* Stats row */
+.ob-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.obs-card{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 4px;text-align:center}
+.obs-val{font-size:12.5px;font-weight:900;line-height:1;margin-bottom:3px}
+.obs-lbl{font-size:8px;color:rgba(255,255,255,.5)}
+.obs-bad .obs-val{color:#fca5a5}
+.obs-good .obs-val{color:#86efac}
+/* Call button */
+.ob-btn-row{text-align:center;margin-top:12px}
+.ob-call-btn{
+  background:linear-gradient(135deg,var(--brand-500),var(--brand-700));
+  color:white;border:none;border-radius:12px;
+  padding:11px 22px;font-size:12.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 14px rgba(0,107,104,.45);
+  -webkit-tap-highlight-color:transparent;transition:all .2s;
+}
+.ob-call-btn:active{transform:scale(.93)}
+.ob-call-btn:disabled{opacity:.45;cursor:default}
+@keyframes obFadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes obBankPop{0%{transform:scale(1)}45%{transform:scale(1.14)}100%{transform:scale(1)}}
+
 /* ═══════════════ SECTION 6: CLOSING ═══════════════ */
 #s6{
   background:var(--grd-hero);
@@ -1120,9 +1233,9 @@ body{
   border-radius:14px;padding:14px 20px;margin-bottom:0;
 }
 .ty-seal-ico{
-  width:80px;height:48px;background:#0051A5;
+  width:80px;height:48px;background:var(--brand-500);
   border-radius:10px;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px rgba(0,81,165,.55);flex-shrink:0;overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,107,104,.55);flex-shrink:0;overflow:hidden;
   padding:4px 6px;
 }
 .ty-seal-ico img{width:100%;height:100%;object-fit:contain}
@@ -1560,6 +1673,66 @@ body{
             <span class="tl-kw">API Chuẩn hóa</span>
             <span class="tl-kw">Kết nối toàn ngành</span>
             <span class="tl-kw">Banking Cloud Certified</span>
+          </div>
+
+          <!-- OPEN BANKING DEMO -->
+          <div class="ob-demo">
+            <div class="ob-demo-label">🔌 Demo — Open Banking Kết Nối Toàn Ngành</div>
+
+            <!-- Toggle Before / After -->
+            <div class="ob-toggle-row">
+              <button class="ob-tog ob-tog-before ob-active" onclick="obSetView('before')">🔴 Trước Open Banking</button>
+              <button class="ob-tog ob-tog-after" onclick="obSetView('after')">🟢 Sau Open Banking</button>
+            </div>
+
+            <!-- BEFORE: data silos -->
+            <div class="ob-view ob-active" id="obViewBefore">
+              <div class="ob-before-label">⚠️ Ốc đảo dữ liệu — ngân hàng không kết nối nhau</div>
+              <div class="ob-islands">
+                <div class="ob-island">🏦<span>BIDV</span><div class="ob-island-x">✗ API</div></div>
+                <div class="ob-island">🏦<span>VCB</span><div class="ob-island-x">✗ API</div></div>
+                <div class="ob-island">🏦<span>TCB</span><div class="ob-island-x">✗ API</div></div>
+                <div class="ob-island">🏦<span>VIB</span><div class="ob-island-x">✗ API</div></div>
+                <div class="ob-island">🏦<span>MBB</span><div class="ob-island-x">✗ API</div></div>
+              </div>
+              <div class="ob-stats">
+                <div class="obs-card obs-bad"><div class="obs-val">3–5 ngày</div><div class="obs-lbl">Xử lý hồ sơ</div></div>
+                <div class="obs-card obs-bad"><div class="obs-val">0 API</div><div class="obs-lbl">Chuẩn chung</div></div>
+                <div class="obs-card obs-bad"><div class="obs-val">Thủ công</div><div class="obs-lbl">Chia sẻ dữ liệu</div></div>
+              </div>
+            </div>
+
+            <!-- AFTER: connected via API Gateway -->
+            <div class="ob-view" id="obViewAfter">
+              <div class="ob-flow">
+                <div class="ob-flow-app" id="obApp">📱 App / FinTech Partner</div>
+                <div class="ob-flow-arrow" id="obArrow1">↓</div>
+                <div class="ob-req-tag" id="obReqTag">GET /openbanking/v1/accounts</div>
+                <div class="ob-flow-gw" id="obGw">⚡ API Gateway · Banking Cloud Certified · OAuth 2.0</div>
+                <div class="ob-flow-arrow" id="obArrow2">↓</div>
+                <div class="ob-banks-row">
+                  <div class="ob-bank" id="ob-BIDV">🏦<span>BIDV</span></div>
+                  <div class="ob-bank" id="ob-VCB">🏦<span>VCB</span></div>
+                  <div class="ob-bank" id="ob-TCB">🏦<span>TCB</span></div>
+                  <div class="ob-bank" id="ob-VIB">🏦<span>VIB</span></div>
+                  <div class="ob-bank" id="ob-MBB">🏦<span>MBB</span></div>
+                </div>
+              </div>
+              <div class="ob-resp-box" id="obRespBox" style="display:none">
+                <div class="ob-resp-line">✅ 5 ngân hàng phản hồi đồng thời</div>
+                <div class="ob-resp-line ob-resp-code">{ "accounts": 5, "balance_total": "482.3M ₫", "sources": ["BIDV","VCB","TCB","VIB","MBB"] }</div>
+                <div class="ob-resp-line">⚡ Thời gian phản hồi: <strong>280ms</strong> &nbsp;·&nbsp; Trước đây: ~3–5 ngày</div>
+              </div>
+              <div class="ob-stats">
+                <div class="obs-card obs-good"><div class="obs-val">280ms</div><div class="obs-lbl">Phản hồi API</div></div>
+                <div class="obs-card obs-good"><div class="obs-val">120+</div><div class="obs-lbl">API chuẩn hóa</div></div>
+                <div class="obs-card obs-good"><div class="obs-val">Tự động</div><div class="obs-lbl">Chia sẻ dữ liệu</div></div>
+              </div>
+              <div class="ob-btn-row">
+                <button class="ob-call-btn" id="obCallBtn" onclick="runObDemo()">🔌 Gọi Open Banking API</button>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -2088,6 +2261,71 @@ function tapSupport(btn, emoji){
 }
 /* expose tapSupport globally */
 window.tapSupport = tapSupport;
+
+/* ── Open Banking Demo ── */
+window.obSetView = function(v){
+  var bv = document.getElementById('obViewBefore');
+  var av = document.getElementById('obViewAfter');
+  var tb = document.querySelector('.ob-tog-before');
+  var ta = document.querySelector('.ob-tog-after');
+  if(!bv) return;
+  if(v==='before'){
+    bv.classList.add('ob-active'); av.classList.remove('ob-active');
+    tb.classList.add('ob-active'); ta.classList.remove('ob-active');
+  } else {
+    av.classList.add('ob-active'); bv.classList.remove('ob-active');
+    ta.classList.add('ob-active'); tb.classList.remove('ob-active');
+    /* reset flow */
+    document.getElementById('obRespBox').style.display='none';
+    ['BIDV','VCB','TCB','VIB','MBB'].forEach(function(b){
+      var el=document.getElementById('ob-'+b); if(el) el.className='ob-bank';
+    });
+    ['obApp','obGw','obArrow1','obArrow2','obReqTag'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.classList.remove('ob-lit');
+    });
+  }
+};
+
+window.runObDemo = function(){
+  var btn=document.getElementById('obCallBtn');
+  if(!btn||btn.disabled) return;
+  btn.disabled=true;
+  var banks=['BIDV','VCB','TCB','VIB','MBB'];
+  var ids=['obApp','obGw','obArrow1','obArrow2','obReqTag'];
+  ids.forEach(function(id){ var el=document.getElementById(id); if(el) el.classList.remove('ob-lit'); });
+  banks.forEach(function(b){ var el=document.getElementById('ob-'+b); if(el) el.className='ob-bank'; });
+  document.getElementById('obRespBox').style.display='none';
+
+  /* Step 1: App activates */
+  setTimeout(function(){
+    var el=document.getElementById('obApp'); if(el) el.classList.add('ob-lit');
+    var r=document.getElementById('obReqTag'); if(r) r.classList.add('ob-lit');
+    var a=document.getElementById('obArrow1'); if(a) a.classList.add('ob-lit');
+  }, 100);
+  /* Step 2: Gateway */
+  setTimeout(function(){
+    var el=document.getElementById('obGw'); if(el) el.classList.add('ob-lit');
+    var a=document.getElementById('obArrow2'); if(a) a.classList.add('ob-lit');
+  }, 500);
+  /* Step 3: Banks light up one by one */
+  banks.forEach(function(b,i){
+    setTimeout(function(){
+      var el=document.getElementById('ob-'+b);
+      if(el){ el.className='ob-bank ob-lit'; el.style.animation='obBankPop .4s ease'; }
+    }, 900 + i*160);
+    setTimeout(function(){
+      var el=document.getElementById('ob-'+b);
+      if(el){ el.className='ob-bank ob-done'; el.style.animation=''; }
+    }, 1300 + i*160);
+  });
+  /* Step 4: Response */
+  setTimeout(function(){
+    var r=document.getElementById('obRespBox');
+    if(r) r.style.display='block';
+    ids.forEach(function(id){ var el=document.getElementById(id); if(el) el.classList.remove('ob-lit'); });
+    setTimeout(function(){ btn.disabled=false; }, 1200);
+  }, 2200);
+};
 
 /* ── Auto-Scaling Demo ── */
 (function(){
