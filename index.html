@@ -570,26 +570,50 @@ body{
 .arch-arrow::before{transform:translate(-50%,-50%) rotate(0deg)}
 .arch-arrow::after{display:none}
 
-/* 3D floating blocks for hero */
-.hero-3d-wrap{
-  position:relative;height:110px;margin-bottom:20px;
-  perspective:800px;
+/* ─── 3D Cloud Architecture Diagram (Hero) ─── */
+.hero-arch{
+  margin:0 0 22px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;padding:16px 12px 12px;
 }
-.hero-block{
-  position:absolute;
-  border-radius:14px;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:10px;text-align:center;color:white;
-  transform-style:preserve-3d;font-weight:700;
-  box-shadow:0 16px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12);
+.arch-title-sm{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--brand-300);text-align:center;margin-bottom:12px}
+.arch-blocks-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;
+  perspective:700px;
 }
-.hero-block .hb-ico{font-size:26px;margin-bottom:4px}
-.hero-block .hb-lbl{font-size:11px;line-height:1.2}
-.hb-a{width:90px;height:90px;background:linear-gradient(135deg,#0086c9,#0c4a6e);top:10px;left:10px;animation:float3d1 4s ease-in-out infinite;transform:perspective(800px) rotateX(15deg) rotateY(-12deg)}
-.hb-b{width:80px;height:80px;background:linear-gradient(135deg,#006b68,#004240);top:0;left:50%;margin-left:-40px;animation:float3d2 5s ease-in-out infinite;transform:perspective(800px) rotateX(10deg) rotateY(5deg)}
-.hb-c{width:85px;height:85px;background:linear-gradient(135deg,#a62c2a,#450a0a);top:15px;right:10px;animation:float3d3 4.5s ease-in-out infinite;transform:perspective(800px) rotateX(12deg) rotateY(14deg)}
-@keyframes float3d1{0%,100%{transform:perspective(800px) rotateX(15deg) rotateY(-12deg) translateY(0)}50%{transform:perspective(800px) rotateX(15deg) rotateY(-12deg) translateY(-12px)}}
-@keyframes float3d2{0%,100%{transform:perspective(800px) rotateX(10deg) rotateY(5deg) translateY(0)}50%{transform:perspective(800px) rotateX(10deg) rotateY(5deg) translateY(-10px)}}
-@keyframes float3d3{0%,100%{transform:perspective(800px) rotateX(12deg) rotateY(14deg) translateY(0)}50%{transform:perspective(800px) rotateX(12deg) rotateY(14deg) translateY(-14px)}}
+.arch-blk{
+  border-radius:12px;padding:14px 8px 10px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  color:white;position:relative;overflow:hidden;
+  transform-style:preserve-3d;cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
+  border:1px solid rgba(255,255,255,.12);
+}
+.arch-blk:hover{transform:perspective(600px) rotateX(-8deg) translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.arch-blk::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent);pointer-events:none}
+.ab-cloud{background:linear-gradient(145deg,#0369a1,#0c4a6e,#082f49);box-shadow:0 8px 24px rgba(3,105,161,.4)}
+.ab-private{background:linear-gradient(145deg,#991b1b,#7f1d1d,#450a0a);box-shadow:0 8px 24px rgba(153,27,27,.4)}
+.ab-onprem{background:linear-gradient(145deg,#92400e,#78350f,#451a03);box-shadow:0 8px 24px rgba(146,64,14,.4)}
+.arch-blk-ico{font-size:28px;margin-bottom:6px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+.arch-blk-name{font-size:11px;font-weight:800;line-height:1.2;margin-bottom:3px}
+.arch-blk-sub{font-size:9px;opacity:.7;margin-bottom:8px;line-height:1.3}
+.arch-blk-items{display:flex;flex-direction:column;gap:3px;width:100%}
+.arch-blk-item{
+  font-size:8.5px;color:rgba(255,255,255,.8);font-weight:600;
+  background:rgba(255,255,255,.1);border-radius:4px;padding:3px 5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+/* Connection arrows between blocks */
+.arch-connectors{
+  display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;
+  align-items:center;margin-top:8px;padding:0 4px;
+}
+.arch-conn-arr{
+  text-align:center;font-size:11px;color:var(--brand-400);
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+}
+.arch-conn-line{height:2px;background:linear-gradient(90deg,rgba(55,173,170,.2),rgba(55,173,170,.6),rgba(55,173,170,.2));border-radius:1px}
+.arch-conn-lbl{font-size:8px;color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap}
 
 /* Enhanced ZT visual */
 .zt-ring-wrap{
@@ -623,6 +647,252 @@ body{
 /* Enhanced pillar 3D */
 .pillar{transform-style:preserve-3d;transition:all 320ms cubic-bezier(.2,.8,.2,1)}
 .pillar:hover{transform:perspective(700px) rotateX(-3deg) rotateY(2deg) translateY(-4px)}
+
+/* ═══════════════ PHONE DEMO (Giai đoạn 2) ═══════════════ */
+.demo-container{
+  margin:16px 0 4px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,183,27,.18);
+  border-radius:16px;padding:16px;
+}
+.demo-label{
+  font-size:11px;font-weight:800;letter-spacing:.8px;
+  color:var(--gold-400);text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.phone-wrap{display:flex;justify-content:center;padding:8px 0 4px}
+.phone{
+  width:240px;
+  background:linear-gradient(145deg,#1a1f2e,#0f1419);
+  border-radius:32px;padding:10px;
+  box-shadow:0 28px 56px rgba(0,0,0,.7),inset 0 0 0 1.5px rgba(255,255,255,.08),0 0 40px rgba(55,173,170,.15);
+  position:relative;
+}
+.phone::before{
+  content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:64px;height:14px;background:#000;border-radius:10px;z-index:2;
+}
+.phone-screen{
+  background:linear-gradient(180deg,#001a18,#002e2c);
+  border-radius:24px;overflow:hidden;
+  display:flex;flex-direction:column;min-height:460px;
+}
+.ph-status{
+  background:rgba(0,0,0,.4);color:rgba(255,255,255,.7);
+  font-size:9px;font-weight:700;
+  padding:28px 14px 6px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ph-header{
+  background:linear-gradient(135deg,var(--brand-600),var(--brand-800));
+  padding:12px 14px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid rgba(55,173,170,.2);
+}
+.ph-logo{
+  width:28px;height:28px;background:white;color:var(--brand-700);
+  font-weight:900;font-size:10px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ph-title{font-size:13px;font-weight:700;color:white;line-height:1.2}
+.ph-sub{font-size:9px;color:rgba(255,255,255,.65)}
+.ph-tag{
+  margin-left:auto;background:rgba(55,173,170,.25);
+  border:1px solid rgba(55,173,170,.4);
+  color:var(--brand-300);font-size:8.5px;font-weight:700;
+  padding:2px 7px;border-radius:999px;flex-shrink:0;
+}
+.ph-body{padding:10px;flex:1;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+/* Balance card */
+.ph-balance{
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  border-radius:10px;padding:10px 12px;color:var(--n-900);
+  position:relative;overflow:hidden;
+}
+.ph-balance::after{
+  content:'';position:absolute;right:-10px;top:-10px;
+  width:60px;height:60px;
+  background:rgba(255,255,255,.15);border-radius:50%;
+}
+.ph-bal-lbl{font-size:8.5px;font-weight:700;opacity:.75}
+.ph-bal-val{font-size:20px;font-weight:900;margin:2px 0 4px;line-height:1}
+.ph-bal-row{display:flex;justify-content:space-between;font-size:8.5px;opacity:.85;font-weight:600}
+/* Action grid */
+.ph-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.ph-act{
+  background:rgba(55,173,170,.1);border:1px solid rgba(55,173,170,.2);
+  border-radius:8px;padding:7px 3px;text-align:center;
+  font-size:8px;color:var(--brand-300);cursor:pointer;
+  transition:all 180ms;
+}
+.ph-act:hover{background:rgba(55,173,170,.2);transform:scale(1.05)}
+.ph-act .ico{font-size:15px;display:block;margin-bottom:2px}
+/* Feature cards */
+.ph-feature{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;padding:9px 10px;
+}
+.ph-feat-hd{
+  display:flex;align-items:center;gap:6px;margin-bottom:5px;
+}
+.ph-feat-ico{font-size:14px}
+.ph-feat-title{font-size:11px;font-weight:700;color:white}
+.ph-feat-badge{
+  margin-left:auto;font-size:8px;font-weight:700;
+  padding:1.5px 6px;border-radius:999px;
+}
+.badge-ai{background:rgba(158,119,237,.2);color:#c4b5fd;border:1px solid rgba(158,119,237,.3)}
+.badge-cloud{background:rgba(0,134,201,.2);color:#7dd3fc;border:1px solid rgba(125,211,252,.3)}
+.badge-new{background:rgba(7,148,85,.2);color:#86efac;border:1px solid rgba(7,148,85,.3)}
+.ph-rows{display:flex;flex-direction:column;gap:4px}
+.ph-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05);
+  font-size:9.5px;
+}
+.ph-row:last-child{border-bottom:none}
+.ph-row .lbl{color:rgba(255,255,255,.6)}
+.ph-row .val{color:white;font-weight:600}
+.ph-row .val.green{color:#86efac}
+.ph-row .val.gold{color:var(--gold-400)}
+/* Bottom nav */
+.ph-nav{
+  background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.06);
+  display:grid;grid-template-columns:repeat(4,1fr);padding:6px 0;
+}
+.ph-nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:8px;color:rgba(255,255,255,.45);padding:4px 0;
+  cursor:pointer;
+}
+.ph-nav-item.active{color:var(--brand-300)}
+.ph-nav-item .ni{font-size:16px}
+/* Feature tags below phone */
+.demo-features{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;
+  justify-content:center;
+}
+.demo-feat{
+  font-size:10.5px;padding:4px 10px;border-radius:8px;font-weight:600;
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;gap:4px;
+}
+
+/* ═══════════════ SHIELD DEMO (Giai đoạn 3) ═══════════════ */
+.shield-demo{
+  margin:16px 0 4px;
+  background:rgba(0,66,64,.12);
+  border:1px solid rgba(55,173,170,.2);
+  border-radius:16px;padding:16px;
+}
+.shield-demo-label{
+  font-size:11px;font-weight:800;letter-spacing:.8px;
+  color:var(--brand-300);text-transform:uppercase;margin-bottom:4px;
+  display:flex;align-items:center;gap:6px;
+}
+.shield-desc{font-size:11.5px;color:rgba(255,255,255,.65);margin-bottom:14px;line-height:1.55}
+.shield-scene{
+  position:relative;width:100%;padding-bottom:100%;
+  max-width:280px;margin:0 auto 12px;
+}
+.shield-scene-inner{
+  position:absolute;inset:0;
+}
+/* Central SOC */
+.soc-center{
+  position:absolute;top:50%;left:50%;
+  width:64px;height:64px;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(135deg,var(--brand-500),var(--brand-700));
+  border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:22px;z-index:10;
+  box-shadow:0 0 0 0 rgba(55,173,170,.4);
+  animation:socPulse 3s ease-in-out infinite;
+}
+.soc-label{font-size:8px;font-weight:800;color:white;letter-spacing:.3px;margin-top:1px}
+@keyframes socPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(55,173,170,.5),0 0 20px rgba(55,173,170,.3)}
+  40%{box-shadow:0 0 0 16px rgba(55,173,170,.0),0 0 32px rgba(55,173,170,.6)}
+}
+/* Bank nodes */
+.bank-node{
+  position:absolute;
+  width:44px;height:44px;
+  border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:14px;z-index:5;
+  transition:all .4s;
+  border:2px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
+  transform:translate(-50%,-50%);
+}
+.bank-node .bn-lbl{font-size:7.5px;font-weight:700;color:rgba(255,255,255,.7);margin-top:1px;white-space:nowrap}
+.bank-node.attacked{
+  border-color:var(--red-500);
+  background:rgba(217,45,32,.2);
+  animation:attackShake .5s ease-in-out 0s 2, attackGlow 1s ease-in-out .5s infinite alternate;
+  z-index:8;
+}
+@keyframes attackShake{
+  0%,100%{transform:translate(-50%,-50%)}
+  25%{transform:translate(calc(-50% - 4px),-50%)}
+  75%{transform:translate(calc(-50% + 4px),-50%)}
+}
+@keyframes attackGlow{
+  from{box-shadow:0 0 12px rgba(217,45,32,.5)}
+  to{box-shadow:0 0 28px rgba(217,45,32,.9)}
+}
+.bank-node.protected{
+  border-color:var(--green-600);
+  background:rgba(7,148,85,.15);
+  animation:protectGlow 1.5s ease-in-out infinite alternate;
+}
+@keyframes protectGlow{
+  from{box-shadow:0 0 8px rgba(7,148,85,.3)}
+  to{box-shadow:0 0 20px rgba(7,148,85,.7)}
+}
+.shield-badge{
+  position:absolute;top:-6px;right:-6px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--green-600);display:none;
+  align-items:center;justify-content:center;font-size:9px;
+  border:1.5px solid var(--n-900);
+}
+.bank-node.protected .shield-badge{display:flex}
+/* Connection lines */
+.conn-lines{position:absolute;inset:0;pointer-events:none}
+.conn-svg{width:100%;height:100%}
+.conn-line{
+  stroke:rgba(55,173,170,.15);stroke-width:1;fill:none;
+  transition:all .5s;
+}
+.conn-line.alert-line{stroke:rgba(217,45,32,.8);stroke-width:2;stroke-dasharray:4 2}
+.conn-line.shield-line{stroke:rgba(7,148,85,.7);stroke-width:2;stroke-dasharray:none;animation:linePulse 1s ease-in-out infinite alternate}
+@keyframes linePulse{from{stroke-opacity:.5}to{stroke-opacity:1}}
+/* Attack alert banner */
+.attack-banner{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(217,45,32,.12);border:1px solid rgba(217,45,32,.35);
+  border-radius:10px;padding:9px 12px;margin-bottom:8px;
+  font-size:11.5px;color:rgba(255,255,255,.9);
+  animation:bannerPulse 1.5s ease-in-out infinite;
+}
+@keyframes bannerPulse{0%,100%{border-color:rgba(217,45,32,.35)}50%{border-color:rgba(217,45,32,.8)}}
+.attack-banner .ab-ico{font-size:18px;flex-shrink:0;animation:warningBlink .8s step-end infinite}
+@keyframes warningBlink{0%,100%{opacity:1}50%{opacity:.2}}
+/* Defense log */
+.defense-log{display:flex;flex-direction:column;gap:5px}
+.log-item{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;padding:7px 10px;font-size:11px;color:rgba(255,255,255,.82);
+}
+.log-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.log-dot.red{background:var(--red-500);animation:warningBlink .8s step-end infinite}
+.log-dot.amber{background:var(--gold-500)}
+.log-dot.green{background:var(--green-600)}
+.log-time{font-size:9.5px;color:rgba(255,255,255,.45);margin-left:auto;flex-shrink:0}
 
 /* ═══════════════ SECTION 7: AUDIENCE INTERACTION ═══════════════ */
 #s7{background:linear-gradient(180deg,#0a1628 0%,#001a10 100%)}
@@ -708,6 +978,25 @@ body{
 .wc:nth-child(9){animation-delay:.8s}    .wc:nth-child(10){animation-delay:.9s}
 .wc:nth-child(11){animation-delay:1s}
 @keyframes wc{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ─── Support 3 buttons ─── */
+.support-btns{padding:0 20px 24px;max-width:480px;margin:0 auto}
+.sbtn-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.sbtn{
+  border:none;border-radius:14px;padding:14px 8px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  font-family:inherit;transition:all 200ms;
+  -webkit-tap-highlight-color:transparent;
+}
+.sbtn:active{transform:scale(.9)}
+.sbtn-heart{background:linear-gradient(135deg,#e11d48,#9f1239);color:white;box-shadow:0 6px 18px rgba(225,29,72,.4)}
+.sbtn-like{background:linear-gradient(135deg,#0086c9,#075985);color:white;box-shadow:0 6px 18px rgba(0,134,201,.4)}
+.sbtn-lovely{background:linear-gradient(135deg,#7c3aed,#4c1d95);color:white;box-shadow:0 6px 18px rgba(124,58,237,.4)}
+.sbtn.tapped{animation:btnPop .3s ease-out}
+@keyframes btnPop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+.sbtn-ico{font-size:28px}
+.sbtn-lbl{font-size:11px;font-weight:700;letter-spacing:.3px}
+.sbtn-cnt{font-size:16px;font-weight:900}
 
 /* ═══════════════ SECTION 8: THANK YOU ═══════════════ */
 #s8{
@@ -821,19 +1110,55 @@ body{
 <section id="s1">
   <div class="hero-inner">
 
-    <!-- 3D Floating Blocks -->
-    <div class="hero-3d-wrap">
-      <div class="hero-block hb-a">
-        <div class="hb-ico">☁️</div>
-        <div class="hb-lbl">Public<br>Cloud</div>
+    <!-- Hybrid Multi-Cloud Architecture Blocks -->
+    <div class="hero-arch">
+      <div class="arch-title-sm">⚡ Kiến Trúc Hybrid Multi-Cloud · BIDV</div>
+      <div class="arch-blocks-row">
+
+        <div class="arch-blk ab-onprem">
+          <div class="arch-blk-ico">🏛️</div>
+          <div class="arch-blk-name">Hạ Tầng<br>Truyền Thống</div>
+          <div class="arch-blk-sub">On-Premises</div>
+          <div class="arch-blk-items">
+            <div class="arch-blk-item">🏦 Core Banking</div>
+            <div class="arch-blk-item">🔐 Dữ liệu M4</div>
+            <div class="arch-blk-item">⚖️ Compliance</div>
+          </div>
+        </div>
+
+        <div class="arch-blk ab-private">
+          <div class="arch-blk-ico">🔒</div>
+          <div class="arch-blk-name">Private<br>Cloud</div>
+          <div class="arch-blk-sub">Đám Mây Riêng</div>
+          <div class="arch-blk-items">
+            <div class="arch-blk-item">⚙️ Hệ thống trọng yếu</div>
+            <div class="arch-blk-item">🛡️ Zero Trust</div>
+            <div class="arch-blk-item">📊 Dữ liệu M3</div>
+          </div>
+        </div>
+
+        <div class="arch-blk ab-cloud">
+          <div class="arch-blk-ico">☁️</div>
+          <div class="arch-blk-name">Public<br>Cloud</div>
+          <div class="arch-blk-sub">Đám Mây Công Cộng</div>
+          <div class="arch-blk-items">
+            <div class="arch-blk-item">🤖 AI &amp; Big Data</div>
+            <div class="arch-blk-item">📈 Auto Scaling</div>
+            <div class="arch-blk-item">🌐 Dual+X Model</div>
+          </div>
+        </div>
+
       </div>
-      <div class="hero-block hb-b">
-        <div class="hb-ico">🔒</div>
-        <div class="hb-lbl">Private<br>Cloud</div>
+      <!-- Connection indicators -->
+      <div style="display:flex;align-items:center;margin-top:8px;padding:0 8px;gap:4px">
+        <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(146,64,14,.6),rgba(55,173,170,.6))"></div>
+        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.5);white-space:nowrap;padding:0 6px">Secure API Gateway</div>
+        <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(55,173,170,.6),rgba(3,105,161,.6))"></div>
       </div>
-      <div class="hero-block hb-c">
-        <div class="hb-ico">🏛️</div>
-        <div class="hb-lbl">On-<br>Prem</div>
+      <div style="display:flex;justify-content:space-between;padding:4px 4px 0;font-size:8.5px;color:rgba(255,255,255,.45)">
+        <span>Chủ quyền tuyệt đối</span>
+        <span>Kiểm soát cao</span>
+        <span>Linh hoạt tối đa</span>
       </div>
     </div>
 
@@ -1159,6 +1484,99 @@ body{
             <span class="tl-kw">Embedded Finance</span>
             <span class="tl-kw">AI Credit Score</span>
           </div>
+
+          <!-- PHONE DEMO -->
+          <div class="demo-container">
+            <div class="demo-label">📱 Demo — BIDV iBank 2028 · MyData &amp; Embedded Finance</div>
+            <div class="phone-wrap">
+              <div class="phone">
+                <div class="phone-screen">
+                  <div class="ph-status">
+                    <span>9:41</span><span>📶 ☁️ 🔋</span>
+                  </div>
+                  <div class="ph-header">
+                    <div class="ph-logo">BIDV</div>
+                    <div>
+                      <div class="ph-title">BIDV iBank</div>
+                      <div class="ph-sub">Xin chào, Nguyễn Văn An ✦</div>
+                    </div>
+                    <div class="ph-tag">Cloud ✓</div>
+                  </div>
+                  <div class="ph-body">
+                    <!-- Balance -->
+                    <div class="ph-balance">
+                      <div class="ph-bal-lbl">SỐ DƯ TÀI KHOẢN</div>
+                      <div class="ph-bal-val">48,250,000 ₫</div>
+                      <div class="ph-bal-row">
+                        <span>Thẻ •••• 4291</span>
+                        <span>+2.4% tháng này</span>
+                      </div>
+                    </div>
+                    <!-- Quick actions -->
+                    <div class="ph-actions">
+                      <div class="ph-act"><span class="ico">💸</span>Chuyển khoản</div>
+                      <div class="ph-act"><span class="ico">📲</span>Nạp tiền</div>
+                      <div class="ph-act"><span class="ico">🛒</span>Thanh toán</div>
+                      <div class="ph-act"><span class="ico">📊</span>Đầu tư</div>
+                    </div>
+                    <!-- AI Credit Score -->
+                    <div class="ph-feature">
+                      <div class="ph-feat-hd">
+                        <span class="ph-feat-ico">🤖</span>
+                        <span class="ph-feat-title">AI Credit Score 360</span>
+                        <span class="ph-feat-badge badge-ai">AI Cloud</span>
+                      </div>
+                      <div class="ph-rows">
+                        <div class="ph-row"><span class="lbl">Điểm tín dụng</span><span class="val green">820 / 1000 ⭐</span></div>
+                        <div class="ph-row"><span class="lbl">Nguồn dữ liệu</span><span class="val">VNeID + 30 TCTD</span></div>
+                        <div class="ph-row"><span class="lbl">Hạn mức vay</span><span class="val gold">500,000,000 ₫</span></div>
+                      </div>
+                    </div>
+                    <!-- Embedded Finance -->
+                    <div class="ph-feature">
+                      <div class="ph-feat-hd">
+                        <span class="ph-feat-ico">🔗</span>
+                        <span class="ph-feat-title">Tài Chính Nhúng</span>
+                        <span class="ph-feat-badge badge-new">Embedded</span>
+                      </div>
+                      <div class="ph-rows">
+                        <div class="ph-row"><span class="lbl">Mua trước – trả sau</span><span class="val green">Shopee · Lazada</span></div>
+                        <div class="ph-row"><span class="lbl">Bảo hiểm nhúng</span><span class="val">Grab · VinFast</span></div>
+                        <div class="ph-row"><span class="lbl">MyData đồng ý</span><span class="val green">✓ VNeID xác thực</span></div>
+                      </div>
+                    </div>
+                    <!-- Cloud status -->
+                    <div class="ph-feature">
+                      <div class="ph-feat-hd">
+                        <span class="ph-feat-ico">☁️</span>
+                        <span class="ph-feat-title">Cloud Health</span>
+                        <span class="ph-feat-badge badge-cloud">Auto Scale</span>
+                      </div>
+                      <div class="ph-rows">
+                        <div class="ph-row"><span class="lbl">Uptime</span><span class="val green">99.99%</span></div>
+                        <div class="ph-row"><span class="lbl">Phản hồi API</span><span class="val green">12ms</span></div>
+                        <div class="ph-row"><span class="lbl">Zero Trust</span><span class="val green">🛡 Active</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ph-nav">
+                    <div class="ph-nav-item active"><span class="ni">🏠</span>Trang chủ</div>
+                    <div class="ph-nav-item"><span class="ni">💳</span>Thẻ</div>
+                    <div class="ph-nav-item"><span class="ni">📈</span>Đầu tư</div>
+                    <div class="ph-nav-item"><span class="ni">👤</span>Tôi</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-features">
+              <span class="demo-feat">🧠 AI Credit 30 TCTD</span>
+              <span class="demo-feat">🪪 VNeID MyData</span>
+              <span class="demo-feat">🔗 Embedded Finance</span>
+              <span class="demo-feat">⚡ 12ms API</span>
+              <span class="demo-feat">🛡 Zero Trust</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1175,6 +1593,98 @@ body{
             <span class="tl-kw">Đám Mây Chủ Quyền</span>
             <span class="tl-kw">Tầm nhìn 2045</span>
           </div>
+
+          <!-- SHIELD DEMO -->
+          <div class="shield-demo">
+            <div class="shield-demo-label">🛡️ Demo — Lá Chắn Số Toàn Ngành</div>
+            <div class="shield-desc">Khi một ngân hàng bị tấn công, SOC trung tâm phát hiện tức thì và kích hoạt lá chắn bảo vệ toàn bộ hệ thống ngân hàng.</div>
+
+            <!-- Attack alert -->
+            <div class="attack-banner">
+              <div class="ab-ico">🚨</div>
+              <div>
+                <div style="font-size:11.5px;font-weight:700;color:#fca5a5">CẢNH BÁO TẤN CÔNG — NH Thương Mại A</div>
+                <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:2px">DDoS Layer 7 · 2.4M req/s · 00:00:03 ago</div>
+              </div>
+            </div>
+
+            <!-- Shield network visualization -->
+            <div class="shield-scene">
+              <div class="shield-scene-inner" id="shieldScene">
+                <!-- SVG connection lines -->
+                <svg class="conn-svg" id="connSvg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Lines from center (140,140) to each bank node -->
+                  <line id="cl0" class="conn-line alert-line" x1="140" y1="140" x2="140" y2="40"/>
+                  <line id="cl1" class="conn-line shield-line" x1="140" y1="140" x2="228" y2="88"/>
+                  <line id="cl2" class="conn-line shield-line" x1="140" y1="140" x2="240" y2="180"/>
+                  <line id="cl3" class="conn-line shield-line" x1="140" y1="140" x2="190" y2="248"/>
+                  <line id="cl4" class="conn-line shield-line" x1="140" y1="140" x2="90"  y2="248"/>
+                  <line id="cl5" class="conn-line shield-line" x1="140" y1="140" x2="40"  y2="180"/>
+                  <line id="cl6" class="conn-line shield-line" x1="140" y1="140" x2="52"  y2="88"/>
+                </svg>
+                <!-- SOC Center -->
+                <div class="soc-center">
+                  🛡️
+                  <div class="soc-label">SOC AI</div>
+                </div>
+                <!-- Bank nodes positioned around circle r=100 center=140 -->
+                <!-- attacked: NH A at top (270°) -->
+                <div class="bank-node attacked" style="left:140px;top:40px">
+                  🏦<div class="bn-lbl">NH A</div>
+                </div>
+                <!-- protected banks -->
+                <div class="bank-node protected" style="left:228px;top:88px">
+                  🏦<div class="bn-lbl">NH B</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+                <div class="bank-node protected" style="left:240px;top:180px">
+                  🏦<div class="bn-lbl">NH C</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+                <div class="bank-node protected" style="left:190px;top:248px">
+                  🏦<div class="bn-lbl">BIDV</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+                <div class="bank-node protected" style="left:90px;top:248px">
+                  🏦<div class="bn-lbl">NH E</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+                <div class="bank-node protected" style="left:40px;top:180px">
+                  🏦<div class="bn-lbl">NH F</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+                <div class="bank-node protected" style="left:52px;top:88px">
+                  🏦<div class="bn-lbl">NH G</div>
+                  <div class="shield-badge">🛡</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Defense log -->
+            <div class="defense-log">
+              <div class="log-item">
+                <div class="log-dot red"></div>
+                <span><b>00:00:01</b> — Phát hiện tấn công DDoS tại NH A</span>
+                <span class="log-time">🔴 Live</span>
+              </div>
+              <div class="log-item">
+                <div class="log-dot amber"></div>
+                <span><b>00:00:02</b> — SOC AI phân tích · Gửi cảnh báo toàn ngành</span>
+                <span class="log-time">🟡 2s</span>
+              </div>
+              <div class="log-item">
+                <div class="log-dot green"></div>
+                <span><b>00:00:03</b> — 6 ngân hàng kích hoạt lá chắn tự động</span>
+                <span class="log-time">🟢 3s</span>
+              </div>
+              <div class="log-item">
+                <div class="log-dot green"></div>
+                <span><b>Kết quả:</b> Toàn bộ hệ thống được bảo vệ trong <b style="color:#86efac">3 giây</b></span>
+                <span class="log-time">✅</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1232,6 +1742,146 @@ body{
   </div>
 </section>
 
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 7 — TƯƠNG TÁC KHÁN GIẢ
+════════════════════════════════════════ -->
+<section id="s7">
+  <div class="interact-wrap">
+
+    <div class="sec-label anim" style="justify-content:center">💝 Phần 7 — Tương Tác</div>
+    <h2 class="sec-title anim" data-d="1" style="text-align:center">Ủng Hộ Đội Thi BIDV!</h2>
+    <p class="interact-lead anim" data-d="2">
+      Nếu bài thuyết trình đã truyền cảm hứng cho bạn, hãy thả tim &amp; like để ủng hộ đội thi! Mỗi tình cảm của Quý vị là động lực lớn cho chúng tôi.
+    </p>
+
+    <!-- Counter -->
+    <div class="heart-counter anim" data-d="2">
+      <div id="heartCount">0</div>
+      <div class="hc-unit">lượt ủng hộ</div>
+    </div>
+
+    <!-- Heart button -->
+    <div class="heart-btn-zone anim" data-d="3">
+      <button class="heart-btn" id="heartBtn">
+        <span class="hb-ico">❤️</span>
+        Thả Tim Ủng Hộ
+      </button>
+    </div>
+
+    <!-- Reaction buttons -->
+    <div class="reactions anim" data-d="4">
+      <div class="react-btn" data-emoji="👍" id="rb-like">
+        👍
+        <span class="react-cnt" id="rc-like">0</span>
+      </div>
+      <div class="react-btn" data-emoji="💖" id="rb-love">
+        💖
+        <span class="react-cnt" id="rc-love">0</span>
+      </div>
+      <div class="react-btn" data-emoji="👏" id="rb-clap">
+        👏
+        <span class="react-cnt" id="rc-clap">0</span>
+      </div>
+      <div class="react-btn" data-emoji="🔥" id="rb-fire">
+        🔥
+        <span class="react-cnt" id="rc-fire">0</span>
+      </div>
+    </div>
+
+    <!-- Wave text -->
+    <div class="wave-row anim" data-d="4">
+      <span class="wc">C</span><span class="wc">Ả</span><span class="wc">M</span>
+      <span class="wc" style="margin:0 4px"> </span>
+      <span class="wc">Ơ</span><span class="wc">N</span>
+      <span class="wc" style="margin:0 4px"> </span>
+      <span class="wc">Q</span><span class="wc">U</span><span class="wc">Ý</span>
+      <span class="wc" style="margin:0 4px"> </span>
+      <span class="wc">V</span><span class="wc">Ị</span>
+      <span class="wc" style="margin:0 4px"> </span>
+      <span class="wc">!</span>
+    </div>
+
+    <p style="font-size:11px;color:rgba(255,255,255,.38);margin-top:14px" class="anim" data-d="5">
+      Tình cảm của Quý vị là nguồn động lực của đội thi BIDV 🙏
+    </p>
+
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 8 — CẢM ƠN
+════════════════════════════════════════ -->
+<section id="s8">
+  <div class="ty-inner">
+
+    <div class="ty-bigicon">🌏</div>
+
+    <div class="ty-hearts-row">
+      <span class="ty-heart">❤️</span>
+      <span class="ty-heart">💛</span>
+      <span class="ty-heart">❤️</span>
+      <span class="ty-heart">💛</span>
+      <span class="ty-heart">❤️</span>
+    </div>
+
+    <h2 class="ty-title anim">Xin Trân Trọng Cảm Ơn!</h2>
+    <div class="ty-badge anim" data-d="1">🏦 Đội Thi Hiến Kế BIDV 2026</div>
+
+    <p class="ty-desc anim" data-d="2">
+      Kính chúc Quý vị đại biểu, Ban Giám khảo và toàn thể khán giả sức khoẻ, hạnh phúc và thành công! Cảm ơn sự theo dõi và tình cảm Quý vị đã dành cho đội thi.
+    </p>
+
+    <div class="ty-quote-box anim" data-d="3">
+      <div class="ty-quote-mark">"</div>
+      <div class="ty-quote-text">
+        Đội thi BIDV kính cảm ơn Quý vị đã theo dõi và dành tình cảm cho đội thi. Chúng tôi cam kết đồng hành cùng BIDV trên hành trình chuyển đổi số, xây dựng hạ tầng số an toàn — linh hoạt — bền vững cho tương lai tài chính Việt Nam!
+      </div>
+    </div>
+
+    <div class="ty-seal anim" data-d="4">
+      <div class="ty-seal-ico">BIDV</div>
+      <div>
+        <div class="ty-seal-name">Ngân hàng TMCP Đầu tư &amp; Phát triển Việt Nam</div>
+        <div class="ty-seal-sub">Hiến Kế Sáng Tạo · Công Đoàn BIDV 2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3 Support Buttons -->
+  <div class="support-btns anim" data-d="5" id="supportBtns">
+    <div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:12px;text-align:center">
+      Hãy ủng hộ phần trình diễn của đội thi BIDV!
+    </div>
+    <div class="sbtn-row">
+      <button class="sbtn sbtn-heart" onclick="tapSupport(this,'❤️')">
+        <span class="sbtn-ico">❤️</span>
+        <span class="sbtn-lbl">Yêu Thích</span>
+        <span class="sbtn-cnt" id="sc-heart">0</span>
+      </button>
+      <button class="sbtn sbtn-like" onclick="tapSupport(this,'👍')">
+        <span class="sbtn-ico">👍</span>
+        <span class="sbtn-lbl">Like</span>
+        <span class="sbtn-cnt" id="sc-like">0</span>
+      </button>
+      <button class="sbtn sbtn-lovely" onclick="tapSupport(this,'💝')">
+        <span class="sbtn-ico">💝</span>
+        <span class="sbtn-lbl">Lovely</span>
+        <span class="sbtn-cnt" id="sc-lovely">0</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="ty-bottom">
+    <div class="ty-bottom-main">BIDV — VÌ VIỆT NAM THỊNH VƯỢNG</div>
+    <div class="ty-bottom-sub">Đa Đám Mây Lai · Kiến Tạo Hạ Tầng Số An Toàn · 2026</div>
+  </div>
+</section>
+
 <!-- ════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════ -->
@@ -1272,8 +1922,82 @@ setTimeout(function(){
   });
 }, 2000);
 
+/* ── Heart button ── */
+var heartTotal = 0;
+var heartEl = document.getElementById('heartCount');
+document.getElementById('heartBtn').addEventListener('click', function(e){
+  heartTotal++;
+  heartEl.textContent = heartTotal;
+  heartEl.classList.remove('pop');
+  void heartEl.offsetWidth;
+  heartEl.classList.add('pop');
+  // spawn floating heart
+  var emojis = ['❤️','💖','💗','💓','🩷'];
+  var em = emojis[Math.floor(Math.random()*emojis.length)];
+  var el = document.createElement('div');
+  el.className = 'float-heart';
+  el.textContent = em;
+  var dx = (Math.random()-0.5)*80;
+  var rot = (Math.random()-0.5)*40;
+  el.style.cssText = 'left:'+(e.clientX-16)+'px;top:'+(e.clientY-16)+'px;font-size:'+(22+Math.random()*14)+'px;--dx:'+dx+'px;--rot:'+rot+'deg';
+  document.body.appendChild(el);
+  setTimeout(function(){ el.remove(); }, 1400);
+});
+
+/* ── Reaction buttons ── */
+var rcounts = {like:0,love:0,clap:0,fire:0};
+document.querySelectorAll('.react-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = btn.id.replace('rb-','');
+    rcounts[id] = (rcounts[id]||0) + 1;
+    document.getElementById('rc-'+id).textContent = rcounts[id];
+    btn.classList.remove('bumped');
+    void btn.offsetWidth;
+    btn.classList.add('bumped');
+    // spawn emoji
+    var el = document.createElement('div');
+    el.className = 'float-heart';
+    el.textContent = btn.dataset.emoji;
+    var r = btn.getBoundingClientRect();
+    el.style.cssText = 'left:'+(r.left+r.width/2-12)+'px;top:'+(r.top-10)+'px;font-size:24px;--dx:'+((Math.random()-0.5)*40)+'px;--rot:'+((Math.random()-0.5)*30)+'deg';
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 1400);
+  });
+});
+
+/* ── Support buttons (s8) ── */
+var scounts = {heart:0,like:0,lovely:0};
+function tapSupport(btn, emoji){
+  var id = btn.id ? btn.id.replace('sbtn-','') : btn.className.match(/sbtn-(\w+)/)[1];
+  // detect which button
+  if(btn.classList.contains('sbtn-heart')) id='heart';
+  else if(btn.classList.contains('sbtn-like')) id='like';
+  else id='lovely';
+  scounts[id]++;
+  document.getElementById('sc-'+id).textContent = scounts[id];
+  btn.classList.remove('tapped');
+  void btn.offsetWidth;
+  btn.classList.add('tapped');
+  // spawn emojis
+  var r = btn.getBoundingClientRect();
+  for(var i=0;i<3;i++){
+    (function(idx){
+      setTimeout(function(){
+        var el = document.createElement('div');
+        el.className = 'float-heart';
+        el.textContent = emoji;
+        el.style.cssText = 'left:'+(r.left+r.width/2-12+((Math.random()-0.5)*40))+'px;top:'+(r.top)+'px;font-size:22px;--dx:'+((Math.random()-0.5)*60)+'px;--rot:'+((Math.random()-0.5)*40)+'deg';
+        document.body.appendChild(el);
+        setTimeout(function(){ el.remove(); }, 1400);
+      }, idx*120);
+    })(i);
+  }
+}
+/* expose tapSupport globally */
+window.tapSupport = tapSupport;
+
 /* ── Section nav highlight on scroll ── */
-var secIds = ['s1','s2','s3','s4','s5','s6'];
+var secIds = ['s1','s2','s3','s4','s5','s6','s7','s8'];
 var navBtns = document.querySelectorAll('.sec-btn');
 var secObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
