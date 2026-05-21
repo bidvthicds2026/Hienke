@@ -2131,17 +2131,17 @@ body{
       <button class="sbtn sbtn-heart" onclick="tapSupport(this,'❤️')">
         <span class="sbtn-ico">❤️</span>
         <span class="sbtn-lbl">Yêu Thích</span>
-        <span class="sbtn-cnt" id="sc-heart">0</span>
+        <span class="sbtn-cnt" id="sc-heart">225</span>
       </button>
       <button class="sbtn sbtn-like" onclick="tapSupport(this,'👍')">
         <span class="sbtn-ico">👍</span>
         <span class="sbtn-lbl">Like</span>
-        <span class="sbtn-cnt" id="sc-like">0</span>
+        <span class="sbtn-cnt" id="sc-like">225</span>
       </button>
       <button class="sbtn sbtn-lovely" onclick="tapSupport(this,'💝')">
         <span class="sbtn-ico">💝</span>
         <span class="sbtn-lbl">Lovely</span>
-        <span class="sbtn-cnt" id="sc-lovely">0</span>
+        <span class="sbtn-cnt" id="sc-lovely">225</span>
       </button>
     </div>
   </div>
@@ -2239,7 +2239,7 @@ document.querySelectorAll('.react-btn').forEach(function(btn){
 });
 
 /* ── Support buttons (s8) ── */
-var scounts = {heart:0,like:0,lovely:0};
+var scounts = {heart:225,like:225,lovely:225};
 function tapSupport(btn, emoji){
   var id = btn.id ? btn.id.replace('sbtn-','') : btn.className.match(/sbtn-(\w+)/)[1];
   // detect which button
